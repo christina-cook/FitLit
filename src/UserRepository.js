@@ -1,4 +1,4 @@
-const User = require('../src/User');
+// const User = require('../src/User');
 
 class UserRepository {
   constructor(userData) {
@@ -25,13 +25,3 @@ class UserRepository {
 }
 
 module.exports = UserRepository;
-
-// createUsers(userData) {
-//   this.users = userData.map(data => {
-//     const user = new User();
-//     for (key in data) {
-//       user[key] = data[key];
-//     }
-//     return this.users.push(user);
-//   });
-// }

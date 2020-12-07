@@ -1,7 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 const UserRepository = require('../src/UserRepository');
-const User = require('../src/User');
+// const User = require('../src/User');
 
 describe('UserRepository', () => {
   let users, userRepository;
@@ -51,7 +51,7 @@ describe('UserRepository', () => {
     userRepository = new UserRepository(users);
   })
 
-  it.skip('Should have users', () => {
+  it('Should have users', () => {
     expect(userRepository.users).to.eql(users);
   });
 
@@ -66,15 +66,15 @@ describe('UserRepository', () => {
     // })
   });
 
-  it.skip('Should be able to get a user by id', () => {
+  it('Should be able to get a user by id', () => {
     expect(userRepository.returnUser(1)).to.equal(users[0]);
   });
 
-  it.skip('Should return a different user', () => {
+  it('Should return a different user', () => {
     expect(userRepository.returnUser(3)).to.equal(users[2]);
   })
 
-  it.skip('Should calculate the average step goal for all users', () => {
+  it('Should calculate the average step goal for all users', () => {
     expect(userRepository.averageStepGoal()).to.equal(300);
     userRepository.users.pop();
     expect(userRepository.averageStepGoal()).to.equal(400);
