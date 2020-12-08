@@ -8,5 +8,5 @@ const userInfo = document.querySelector('.user-info');
 const stepGoalCompare = document.querySelector('.step-goal-compare');
 
 welcomeMessage.innerText = `Welcome ${user.returnFirstName()}!`;
-userInfo.innerText = `${user.address} * ${user.email} * ${user.strideLength} * ${user.friends}`;
-stepGoalCompare.innerText = `Your step goal is ${user.dailyStepGoal} steps per day. The average goal is ${userRepository.averageStepGoal()} steps per day.`
+userInfo.innerText = `${user.address}\n${user.email}`;
+stepGoalCompare.innerText = `Your step goal is ${user.dailyStepGoal} steps per day.\nThe average goal is ${userRepository.averageStepGoal()} steps per day.`
