@@ -1,7 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 const UserRepository = require('../src/UserRepository');
-// const User = require('../src/User');
+const User = require('../src/User');
 
 describe('UserRepository', () => {
   let users, userRepository;
@@ -55,7 +55,7 @@ describe('UserRepository', () => {
     expect(userRepository.users).to.eql(users);
   });
 
-  it.skip('Should instantiate a new User', () => {
+  it('Should instantiate a new User', () => {
     userRepository.createUsers();
     expect(userRepository.users[0]).to.be.an.instanceof(User);
     expect(userRepository.users[1]).to.be.an.instanceof(User);
