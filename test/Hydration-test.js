@@ -43,23 +43,32 @@ describe('Hydration', () => {
         "userID": 1,
         "date": "2019/06/21",
         "numOunces": 39
+      },
+      {
+        "userID": 1,
+        "date": "2019/06/22",
+        "numOunces": 51
       }];
     hydration = new Hydration(hydrationData);
   });
 
-  it.skip('Should have Hydration data', () => {
+  it('Should have Hydration data', () => {
     expect(hydration.hydrationData).to.eql(hydrationData);
   });
 
-  it.skip('Should get the average ounces consumed', () => {
+  it('Should get the average ounces consumed', () => {
     expect(hydration.getAverageOz()).to.equal(51);
   });
 
-  it.skip('Should get the daily ounces consumed', () => {
-    expect(hydration.getDailyOz()).to.equal(39);
+  it('Should get the daily ounces consumed', () => {
+    expect(hydration.getDailyOz("2019/06/21")).to.equal(39);
+  });
+
+  it('Should get the daily ounces consumed for another day', () => {
+    expect(hydration.getDailyOz("2019/06/19")).to.equal(77);
   });
 
   it.skip('Should get the weekly ounces consumed', () => {
-    expect(hydration.getWeeklyOz()).to.equal(355);
+    expect(hydration.getWeeklyOz("2019/06/21")).to.equal([37, 75, 47, 35, 77, 45, 39]);
   });
 });
