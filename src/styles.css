@@ -1,0 +1,36 @@
+body {
+  align-items: center;
+  background-color: #535454;
+  display: flex;
+  flex-direction: column;
+  font-family: "Lato", sans-serif;
+}
+
+h1 {
+  color: #FECB60;
+  font-size: 10vmin;
+}
+
+h2 {
+  font-size: 7vmin;
+}
+
+p {
+  font-size: 3vmin;
+}
+
+.welcome-card {
+  background-color: white;
+  border: solid, 10px, white;
+  border-radius: 10%;
+  color: #535454;
+  display: flex;
+  flex-direction: column;
+  height: 40%;
+  text-align: center;
+  width: 90%;
+}
+
+.step-goal-compare {
+  font-size: 5vmin;
+}
