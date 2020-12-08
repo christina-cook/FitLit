@@ -1,5 +1,5 @@
 if (typeof require !== 'undefined') {
-  const User = require('../src/User');
+  var User = require('../src/User');
 }
 
 class UserRepository {
