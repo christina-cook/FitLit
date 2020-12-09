@@ -1,3 +1,7 @@
+if (typeof require !== 'undefined') {
+  var Hydration = require('../src/Hydration');
+}
+
 class User {
   constructor(id, name, address, email, strideLength,
     dailyStepGoal, friends) {
@@ -12,6 +16,12 @@ class User {
 
   returnFirstName() {
     return this.name.split(' ')[0];
+  }
+
+  fetchHydration(hydrationData) {
+    const sameId = hydrationData.filter(data => data.userID === this.id);
+    
+    this.hydration = new Hydration(sameId);
   }
 }
 
