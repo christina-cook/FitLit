@@ -1,6 +1,6 @@
-// if (typeof require !== 'undefined') {
-//   var Hydration = require('../src/Hydration');
-// }
+if (typeof require !== 'undefined') {
+  Hydration = require('../src/Hydration');
+}
 
 class User {
   constructor(id, name, address, email, strideLength,
