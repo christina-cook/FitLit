@@ -1,9 +1,10 @@
 const chai = require('chai');
 const expect = chai.expect;
 const User = require('../src/User');
+const Hydration = require('../src/Hydration');
 
 describe('User', () => {
-  let user1, user2;
+  let user1, user2, hydrationData;
 
   beforeEach(() => {
     user1 = new User(3, 'Briarhill Danton',
@@ -13,6 +14,27 @@ describe('User', () => {
     user2 = new User(4, 'Forrest Cook',
     '1234 Best Boy Ave, Las Vegas NV 80001',
     'forrest@example.com', 3, 250, [12, 17, 2, 5]);
+
+    hydrationData = [{
+      "userID": 3,
+      "date": "2019/06/15",
+      "numOunces": 37
+    },
+    {
+      "userID": 4,
+      "date": "2019/06/15",
+      "numOunces": 75
+    },
+    {
+      "userID": 3,
+      "date": "2019/06/16",
+      "numOunces": 47
+    },
+    {
+      "userID": 4,
+      "date": "2019/06/16",
+      "numOunces": 85
+    }];
   });
 
   it('should have an id', () => {
@@ -79,11 +101,37 @@ describe('User', () => {
     expect(user2.returnFirstName()).to.equal('Forrest');
   });
 
-  it.skip('Should fetch Hydration data', () => {
-
+  it('Should fetch Hydration data', () => {
+    user1.fetchHydration(hydrationData);
+    expect(user1.hydration).to.be.an.instanceof(Hydration);
   });
 
-  it.skip('Should have a Hydration property', () => {
+  it('Should have a Hydration property', () => {
+    user1.fetchHydration(hydrationData);
+    expect(user1.hydration.hydrationData).to.eql([{
+      "userID": 3,
+      "date": "2019/06/15",
+      "numOunces": 37
+    },
+    {
+      "userID": 3,
+      "date": "2019/06/16",
+      "numOunces": 47
+    }]);
+  });
 
+  it('Should have a different Hydration property', () => {
+    user2.fetchHydration(hydrationData);
+    expect(user2.hydration.hydrationData).to.eql([{
+
+      "userID": 4,
+      "date": "2019/06/15",
+      "numOunces": 75
+    },
+    {
+      "userID": 4,
+      "date": "2019/06/16",
+      "numOunces": 85
+    }]);
   });
 });

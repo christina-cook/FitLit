@@ -2,6 +2,7 @@ const chai = require('chai');
 const expect = chai.expect;
 const UserRepository = require('../src/UserRepository');
 const User = require('../src/User');
+const Hydration = require('../src/Hydration')
 
 describe('UserRepository', () => {
   let users, userRepository;
@@ -48,6 +49,38 @@ describe('UserRepository', () => {
         33
       ]
     }];
+
+    hydrationData =   [{
+        "userID": 1,
+        "date": "2019/06/15",
+        "numOunces": 37
+      },
+      {
+        "userID": 2,
+        "date": "2019/06/15",
+        "numOunces": 75
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/15",
+        "numOunces": 47
+      },
+      {
+        "userID": 1,
+        "date": "2019/06/16",
+        "numOunces": 85
+      },
+      {
+        "userID": 2,
+        "date": "2019/06/16",
+        "numOunces": 42
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/16",
+        "numOunces": 87
+      }];
+
     userRepository = new UserRepository(users);
   })
 
@@ -57,13 +90,10 @@ describe('UserRepository', () => {
 
   it('Should instantiate a new User', () => {
     userRepository.createUsers();
-    expect(userRepository.users[0]).to.be.an.instanceof(User);
-    expect(userRepository.users[1]).to.be.an.instanceof(User);
-    expect(userRepository.users[2]).to.be.an.instanceof(User);
 
-    // userRepository.users.forEach(user => {
-    //   expect(userRepository).to.be.an.instanceof(User);
-    // })
+    userRepository.users.forEach(user => {
+      expect(user).to.be.an.instanceof(User);
+    })
   });
 
   it('Should be able to get a user by id', () => {
@@ -78,6 +108,15 @@ describe('UserRepository', () => {
     expect(userRepository.averageStepGoal()).to.equal(300);
     userRepository.users.pop();
     expect(userRepository.averageStepGoal()).to.equal(400);
+  });
+
+  it('Should fetch all user hydration', () => {
+    userRepository.createUsers();
+    userRepository.fetchAllHydration(hydrationData);
+
+    userRepository.users.forEach(user => {
+      expect(user.hydration).to.be.an.instanceof(Hydration);
+    });
   });
 
 });

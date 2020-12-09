@@ -1,5 +1,6 @@
 const userRepository = new UserRepository(userData);
 userRepository.createUsers();
+userRepository.fetchAllHydration(hydrationData);
 
 const user = userRepository.users[0]
 
