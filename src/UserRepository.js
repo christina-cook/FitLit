@@ -1,5 +1,5 @@
 if (typeof require !== 'undefined') {
-  var User = require('../src/User');
+  const User = require('../src/User');
 }
 
 class UserRepository {
@@ -23,6 +23,10 @@ class UserRepository {
       return sum + user.dailyStepGoal
     }, 0) / this.users.length;
     return average;
+  }
+
+  fetchAllHydration(hydrationData) {
+    this.users.forEach(user => user.fetchHydration(hydrationData));
   }
 }
 

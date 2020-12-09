@@ -1,6 +1,6 @@
-if (typeof require !== 'undefined') {
-  var Hydration = require('../src/Hydration');
-}
+// if (typeof require !== 'undefined') {
+//   var Hydration = require('../src/Hydration');
+// }
 
 class User {
   constructor(id, name, address, email, strideLength,
@@ -20,7 +20,7 @@ class User {
 
   fetchHydration(hydrationData) {
     const sameId = hydrationData.filter(data => data.userID === this.id);
-    
+
     this.hydration = new Hydration(sameId);
   }
 }
