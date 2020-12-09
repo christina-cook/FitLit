@@ -32,6 +32,12 @@ p {
   margin-bottom: 10px;
 }
 
+.profile-pic {
+  height: 100px;
+  width: 100px;
+  align-self: center;
+}
+
 .step-goal-compare {
   font-size: 5vmin;
 }
