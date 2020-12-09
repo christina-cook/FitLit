@@ -68,7 +68,7 @@ describe('Hydration', () => {
     expect(hydration.getDailyOz("2019/06/19")).to.equal(77);
   });
 
-  it.skip('Should get the weekly ounces consumed', () => {
-    expect(hydration.getWeeklyOz("2019/06/21")).to.equal([37, 75, 47, 35, 77, 45, 39]);
+  it('Should get the weekly ounces consumed', () => {
+    expect(hydration.getWeeklyOz("2019/06/21")).to.eql([37, 75, 47, 35, 77, 45, 39]);
   });
 });

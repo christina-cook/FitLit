@@ -18,10 +18,16 @@ class Hydration {
   }
 
   getWeeklyOz(date) {
-    // find the date we're looking for
-    // filter by 6 days before the date (7 total days)
-    // map to get the number of ounces for each day
-    // return that new map array
+    let targetDay;
+    this.hydrationData.forEach(data => {
+      if (data.date === date) {
+        targetDay = this.hydrationData.indexOf(data);
+      }
+    });
+    const week = this.hydrationData.filter((data, index) => {
+      return (index <= targetDay && index >= (targetDay - 7));
+    });
+    return week.map(day => day.numOunces);
   }
 }
 
