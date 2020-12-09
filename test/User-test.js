@@ -3,7 +3,7 @@ const expect = chai.expect;
 const User = require('../src/User');
 
 describe('User', () => {
-  let user;
+  let user1, user2;
 
   beforeEach(() => {
     user1 = new User(3, 'Briarhill Danton',
@@ -77,5 +77,13 @@ describe('User', () => {
 
   it('should return a different first name', () => {
     expect(user2.returnFirstName()).to.equal('Forrest');
+  });
+
+  it.skip('Should fetch Hydration data', () => {
+
+  });
+
+  it.skip('Should have a Hydration property', () => {
+
   });
 });
