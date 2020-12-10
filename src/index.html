@@ -8,24 +8,34 @@
   </head>
   <body>
     <h1>FitLit</h1>
-    <article class="welcome-card">
-      <h2 class="welcome-message"></h2>
-      <img class="profile-pic" src="../assets/profile-image.png">
-      <p class="user-info"></p>
-      <p class="step-goal-compare"></p>
-    </article>
-    <button class="main-buttons">
-      <img class="hydration-icon" src="../assets/water.png">
-      <p class="welcome-screen-data">ounces</p>
-    </button>
-    <button class="main-buttons">
-      <img class="sleep-icon" src="../assets/sleeping.png">
-      <p class="welcome-screen-data">hours</p>
-    </button>
-    <button class="main-buttons">
-      <img class="activity-icon" src="../assets/exercise.png">
-      <p class="welcome-screen-data">steps</p>
-    </button>
+    <section class="home-dashboard">
+      <article class="welcome-card">
+        <h2 class="welcome-message"></h2>
+        <img class="profile-pic" src="../assets/profile-image.png">
+        <p class="user-info"></p>
+        <p class="step-goal-compare"></p>
+      </article>
+      <button class="main-buttons hydration-button">
+        <img class="hydration-icon" src="../assets/water.png">
+        <p class="welcome-screen-data">ounces</p>
+      </button>
+      <button class="main-buttons sleep-button">
+        <img class="sleep-icon" src="../assets/sleeping.png">
+        <p class="welcome-screen-data">hours</p>
+      </button>
+      <button class="main-buttons ">
+        <img class="activity-icon" src="../assets/exercise.png">
+        <p class="welcome-screen-data">steps</p>
+      </button>
+    </section>
+    <section class="hydration-dashboard hidden">
+      <div class="daily-hydration">
+        <p>PLACEHOLDER</p>
+      </div>
+      <div class="weekly-hydration">
+        <p>PLACEHOLDER</p>
+      </div>
+    </section>
 
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>

@@ -54,3 +54,7 @@ p {
   margin: 10px;
   justify-content: center;
 }
+
+.hidden {
+  display: none!important;
+}
