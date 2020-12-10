@@ -58,47 +58,47 @@ describe('Sleep', () => {
     sleep = new Sleep(sleepData)
   });
 
-  it.skip('Should have sleep data', () => {
+  it('Should have sleep data', () => {
     expect(sleep.sleepData).to.eql(sleepData);
   });
 
-  it.skip('Should be able to get the average hours slept', () => {
-    expect(sleep.getAverageHrsSlept()).to.equal(7.9);
+  it('Should be able to get the average hours slept', () => {
+    expect(sleep.getAverageHrsSlept()).to.equal(7.0);
   });
 
-  it.skip('Should be able to get average sleep quality', () => {
+  it('Should be able to get average sleep quality', () => {
     expect(sleep.getAverageSleepQuality()).to.equal(3.4)
   });
 
-  it.skip('Should be able to get daily hours slept', () => {
+  it('Should be able to get daily hours slept', () => {
     expect(sleep.getDailyHrsSlept("2019/06/22")).to.equal(8.1);
   });
 
-  it.skip('Should be able to get different daily hours slept', () => {
+  it('Should be able to get different daily hours slept', () => {
     expect(sleep.getDailyHrsSlept("2019/06/15")).to.equal(6.1);
   });
 
-  it.skip('Should be able to get daily sleep quality', () => {
+  it('Should be able to get daily sleep quality', () => {
     expect(sleep.getDailySleepQuality("2019/06/22")).to.equal(3.5);
   });
 
-  it.skip('Should be able to get different daily sleep quality', () => {
+  it('Should be able to get different daily sleep quality', () => {
     expect(sleep.getDailySleepQuality("2019/06/15")).to.equal(2.2);
   });
 
-  it.skip('Should get weekly average hours slept', () => {
+  it('Should get weekly average hours slept', () => {
     expect(sleep.getWeeklyAverageHrsSlept("2019/06/22")).to.equal(7.2);
   });
 
-  it.skip('Should get different weekly average hours slept', () => {
-    expect(sleep.getWeeklyAverageHrsSlept("2019/06/21")).to.equal(6.2);
+  it('Should get different weekly average hours slept', () => {
+    expect(sleep.getWeeklyAverageHrsSlept("2019/06/21")).to.equal(6.9);
   });
 
-  it.skip('Should get weekly average sleep quality', () => {
+  it('Should get weekly average sleep quality', () => {
     expect(sleep.getWeeklyAverageSleepQuality("2019/06/22")).to.equal(3.6);
   });
 
-  it.skip('Should get different weekly average sleep quality', () => {
+  it('Should get different weekly average sleep quality', () => {
     expect(sleep.getWeeklyAverageSleepQuality("2019/06/21")).to.equal(3.4);
   });
 });
