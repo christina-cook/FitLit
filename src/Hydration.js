@@ -25,7 +25,7 @@ class Hydration {
       }
     });
     const week = this.hydrationData.filter((data, index) => {
-      return (index <= targetDay && index >= (targetDay - 7));
+      return (index <= targetDay && index >= (targetDay - 6));
     });
     return week.map(day => day.numOunces);
   }
