@@ -72,8 +72,8 @@ p {
 }
 
 .hydration-dashboard {
-  height: 100%;
-  width: 100%;
+  font-size: 6vmin;
+  height: 100vh;
   text-align: center;
 }
 
