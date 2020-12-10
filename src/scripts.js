@@ -17,3 +17,10 @@ const hydrationDashboard = document.querySelector('.hydration-dashboard');
 welcomeMessage.innerText = `Welcome ${user.returnFirstName()}!`;
 userInfo.innerText = `${user.address}\n${user.email}`;
 stepGoalCompare.innerText = `Your step goal is ${user.dailyStepGoal} steps per day.\nThe average goal is ${userRepository.averageStepGoal()} steps per day.`
+
+hydrationButton.addEventListener('click', toggleHydration);
+
+function toggleHydration() {
+  homeDashboard.classList.toggle('hidden');
+  hydrationDashboard.classList.toggle('hidden');
+}
