@@ -9,6 +9,8 @@ const userInfo = document.querySelector('.user-info');
 const stepGoalCompare = document.querySelector('.step-goal-compare');
 const homeDashboard = document.querySelector('.home-dashboard');
 const hydrationButton = document.querySelector('.hydration-button');
+const backButton = document.querySelector('.back-button');
+const hydrationIcon = document.querySelector('.hydration-icon');
 const sleepButton = document.querySelector('.sleep-button');
 const activityButton = document.querySelector('.activityButton');
 const hydrationDashboard = document.querySelector('.hydration-dashboard');
@@ -23,4 +25,6 @@ hydrationButton.addEventListener('click', toggleHydration);
 function toggleHydration() {
   homeDashboard.classList.toggle('hidden');
   hydrationDashboard.classList.toggle('hidden');
+  backButton.classList.toggle('hidden');
+  hydrationIcon.classList.toggle('hidden');
 }
