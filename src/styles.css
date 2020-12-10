@@ -87,7 +87,7 @@ p {
 }
 
 .daily-hydration {
-  height: 30%;
+  min-height: 30%;
   width: 90%;
   background-color: white;
   border-radius: 10px;
