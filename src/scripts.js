@@ -39,9 +39,10 @@ stepGoalCompare.innerText = `Your step goal is ${user.dailyStepGoal} steps per d
 dailyHydration.innerText = user.hydration.getDailyOz(today);
 weeklyHydration.innerText = `${user.hydration.getWeeklyOz(today)}\n${week}`;
 
-hoursSlept.innerText = `Last night you slept ${user.sleep.getDailyHrsSlept(today)} hours`;
-sleepQuality.innerText = `Your quality of sleep last night was ${user.sleep.getDailySleepQuality(today)}/5`
-weeklyHoursSlept.innerText = `${user.sleep.getWeeklyH(today)}\n${week}`
+hoursSlept.innerText = `Last night you slept ${user.sleep.getDailyHrsSlept(today)} hours\nYour average is ${user.sleep.getAverageHrsSlept()} hours`;
+sleepQuality.innerText = `Your quality of sleep last night was ${user.sleep.getDailySleepQuality(today)}/5\nYour average is ${user.sleep.getAverageSleepQuality()}/5`;
+weeklyHoursSlept.innerText = `${user.sleep.getWeeklyHoursSlept(today)}\n${week}`;
+weeklySleepQuality.innerText = `${user.sleep.getWeeklySleepQuality(today)}\n${week}`;
 
 hydrationButton.addEventListener('click', toggleHydration);
 sleepButton.addEventListener('click', toggleSleep);
