@@ -1,5 +1,6 @@
 if (typeof require !== 'undefined') {
   Hydration = require('../src/Hydration');
+  Sleep = require('../src/Sleep');
 }
 
 class User {
@@ -12,6 +13,8 @@ class User {
     this.strideLength = strideLength;
     this.dailyStepGoal = dailyStepGoal;
     this.friends = friends;
+    this.hydration;
+    this.sleep;
   }
 
   returnFirstName() {
@@ -22,6 +25,12 @@ class User {
     const sameId = hydrationData.filter(data => data.userID === this.id);
 
     this.hydration = new Hydration(sameId);
+  }
+
+  fetchSleep(sleepData) {
+    const sameId = sleepData.filter(data => data.userID === this.id);
+
+    this.sleep = new Sleep(sameId);
   }
 }
 
