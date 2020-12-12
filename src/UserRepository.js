@@ -32,6 +32,16 @@ class UserRepository {
   fetchAllSleep(sleepData) {
     this.users.forEach(user => user.fetchSleep(sleepData));
   }
+
+  getAllAvgSleepQuality() {
+    let allAverages = this.users.map(user => {
+      return user.sleep.getAverageSleepQuality();
+    })
+    allAverages = allAverages.reduce((sum, average) => {
+      return sum + average;
+    }, 0) / allAverages.length;
+    return Math.round(10 * allAverages) / 10;
+  }
 }
 
 if (typeof module !== 'undefined') {

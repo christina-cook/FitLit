@@ -260,7 +260,7 @@ describe('UserRepository', () => {
     userRepository.createUsers();
     userRepository.fetchAllSleep(sleepData);
 
-    expect(userRepository.getAverageSleepQuality()).to.equal(4.6);
+    expect(userRepository.getAllAvgSleepQuality()).to.equal(2.7);
   });
 
   it('Should find good sleepers', () => {
