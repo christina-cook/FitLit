@@ -86,12 +86,20 @@ describe('Sleep', () => {
     expect(sleep.getDailySleepQuality("2019/06/15")).to.equal(2.2);
   });
 
-  it('Should get weekly average hours slept', () => {
-    expect(sleep.getWeeklyAverageHrsSlept("2019/06/22")).to.equal(7.2);
+  it('Should get weekly hours slept', () => {
+    expect(sleep.getWeeklyHoursSlept("2019/06/22")).to.eql([7, 10.8, 5.4, 4.1, 9.6, 5.1, 8.1]);
   });
 
-  it('Should get different weekly average hours slept', () => {
-    expect(sleep.getWeeklyAverageHrsSlept("2019/06/21")).to.equal(6.9);
+  it('Should get different weekly hours slept', () => {
+    expect(sleep.getWeeklyHoursSlept("2019/06/21")).to.eql([6.1, 7, 10.8, 5.4, 4.1, 9.6, 5.1]);
+  });
+
+  it('Should get weekly sleep quality', () => {
+    expect(sleep.getWeeklySleepQuality("2019/06/22")).to.eql([4.7, 4.7, 3, 3.6, 2.9, 2.6, 3.5]);
+  });
+
+  it('Should get different weekly sleep quality', () => {
+    expect(sleep.getWeeklySleepQuality("2019/06/21")).to.eql([2.2, 4.7, 4.7, 3, 3.6, 2.9, 2.6]);
   });
 
   it('Should get weekly average sleep quality', () => {
