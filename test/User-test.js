@@ -2,9 +2,10 @@ const chai = require('chai');
 const expect = chai.expect;
 const User = require('../src/User');
 const Hydration = require('../src/Hydration');
+const Sleep = require('../src/Sleep');
 
 describe('User', () => {
-  let user1, user2, hydrationData;
+  let user1, user2, hydrationData, sleepData;
 
   beforeEach(() => {
     user1 = new User(3, 'Briarhill Danton',
@@ -35,6 +36,19 @@ describe('User', () => {
       "date": "2019/06/16",
       "numOunces": 85
     }];
+
+    sleepData = [{
+      "userID": 1,
+      "date": "2019/06/15",
+      "hoursSlept": 6.1,
+      "sleepQuality": 2.2
+    },
+    {
+      "userID": 2,
+      "date": "2019/06/16",
+      "hoursSlept": 7,
+      "sleepQuality": 4.7
+    }]
   });
 
   it('should have an id', () => {
@@ -133,5 +147,30 @@ describe('User', () => {
       "date": "2019/06/16",
       "numOunces": 85
     }]);
+  });
+
+  it('Should fetch Sleep data', () => {
+    user1.fetchSleep(sleepData);
+    expect(user1.sleep).to.be.an.instanceof(Sleep);
+  });
+
+  it('Should have a Sleep property', () => {
+    user1.fetchSleep(sleepData);
+    expect(user1.sleep.sleepData).to.eql([{
+      "userID": 1,
+      "date": "2019/06/15",
+      "hoursSlept": 6.1,
+      "sleepQuality": 2.2
+    }])
+  });
+
+  it('Should have a different Sleep property', () => {
+    user2.fetchSleep(sleepData);
+    expect(user2.sleep.sleepData).to.eql([{
+      "userID": 2,
+      "date": "2019/06/16",
+      "hoursSlept": 7,
+      "sleepQuality": 4.7
+    }])
   });
 });

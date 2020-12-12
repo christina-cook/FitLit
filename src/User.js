@@ -12,6 +12,8 @@ class User {
     this.strideLength = strideLength;
     this.dailyStepGoal = dailyStepGoal;
     this.friends = friends;
+    this.hydration;
+    this.sleep;
   }
 
   returnFirstName() {
