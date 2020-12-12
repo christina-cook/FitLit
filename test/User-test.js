@@ -9,12 +9,12 @@ describe('User', () => {
 
   beforeEach(() => {
     user3 = new User(3, 'Briarhill Danton',
-    '1000 Good Boy Place, Treatsville NY 78552',
-    'danny@example.com', 2, 100, [19, 11, 42, 33]);
+      '1000 Good Boy Place, Treatsville NY 78552',
+      'danny@example.com', 2, 100, [19, 11, 42, 33]);
 
     user4 = new User(4, 'Forrest Cook',
-    '1234 Best Boy Ave, Las Vegas NV 80001',
-    'forrest@example.com', 3, 250, [12, 17, 2, 5]);
+      '1234 Best Boy Ave, Las Vegas NV 80001',
+      'forrest@example.com', 3, 250, [12, 17, 2, 5]);
 
     hydrationData = [{
       "userID": 3,

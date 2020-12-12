@@ -28,6 +28,10 @@ class UserRepository {
   fetchAllHydration(hydrationData) {
     this.users.forEach(user => user.fetchHydration(hydrationData));
   }
+
+  fetchAllSleep(sleepData) {
+    this.users.forEach(user => user.fetchSleep(sleepData));
+  }
 }
 
 if (typeof module !== 'undefined') {
