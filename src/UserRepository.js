@@ -48,6 +48,18 @@ class UserRepository {
       return user.sleep.getWeeklyAverageSleepQuality(date) >= 3;
     })
   }
+
+  findHighestSleepUser(date) {
+    // sort sleep hours from greatest to least to find highest value
+    // filter all the users with the highest value
+    const sortedUsers = this.users.sort((a, b) => {
+      return b.sleep.getDailyHrsSlept(date) - a.sleep.getDailyHrsSlept(date);
+    })
+    const mostSleep = sortedUsers[0].sleep.getDailyHrsSlept(date);
+    return sortedUsers.filter(user => {
+      return user.sleep.getDailyHrsSlept(date) === mostSleep;
+    })
+  }
 }
 
 if (typeof module !== 'undefined') {
