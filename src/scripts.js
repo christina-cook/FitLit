@@ -14,11 +14,13 @@ const homeDashboard = document.querySelector('.home-dashboard');
 const hydrationButton = document.querySelector('.hydration-button');
 const backButton = document.querySelector('.back-button');
 const hydrationIcon = document.querySelector('.hydration-icon');
+const sleepIcon = document.querySelector('.sleep-icon');
 const sleepButton = document.querySelector('.sleep-button');
 const activityButton = document.querySelector('.activityButton');
 const hydrationDashboard = document.querySelector('.hydration-dashboard');
 const dailyHydration = document.querySelector('.daily-hydration');
 const weeklyHydration = document.querySelector('.weekly-hydration');
+const sleepDashboard = document.querySelector('.sleep-dashboard');
 
 
 welcomeMessage.innerText = `Welcome ${user.returnFirstName()}!`;
@@ -28,6 +30,7 @@ dailyHydration.innerText = user.hydration.getDailyOz(today);
 weeklyHydration.innerText = `${user.hydration.getWeeklyOz(today)}\n${week}`;
 
 hydrationButton.addEventListener('click', toggleHydration);
+sleepButton.addEventListener('click', toggleSleep);
 backButton.addEventListener('click', toggleBack);
 
 function toggleHydration() {
@@ -37,8 +40,17 @@ function toggleHydration() {
   hydrationIcon.classList.toggle('hidden');
 }
 
+function toggleSleep() {
+  homeDashboard.classList.toggle('hidden');
+  sleepDashboard.classList.toggle('hidden');
+  backButton.classList.toggle('hidden');
+  sleepIcon.classList.toggle('hidden');
+}
+
 function toggleBack() {
   if (!hydrationDashboard.classList.contains('hidden')) {
     toggleHydration();
+  } else if (!sleepDashboard.classList.contains('hidden')) {
+    toggleSleep();
   }
 }
