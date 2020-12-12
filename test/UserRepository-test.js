@@ -267,7 +267,7 @@ describe('UserRepository', () => {
     userRepository.createUsers();
     userRepository.fetchAllSleep(sleepData);
     const user1 = userRepository.users[0];
-    expect(userRepository.getGoodSleepers()).to.equal(user1);
+    expect(userRepository.getGoodSleepers("2019/06/21")).to.eql([user1]);
   });
 
   it('Should find the user with the highest sleep', () => {

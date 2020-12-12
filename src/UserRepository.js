@@ -42,6 +42,12 @@ class UserRepository {
     }, 0) / allAverages.length;
     return Math.round(10 * allAverages) / 10;
   }
+
+  getGoodSleepers(date) {
+    return this.users.filter(user => {
+      return user.sleep.getWeeklyAverageSleepQuality(date) >= 3;
+    })
+  }
 }
 
 if (typeof module !== 'undefined') {
