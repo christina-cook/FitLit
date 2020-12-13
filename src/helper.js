@@ -22,10 +22,7 @@ const getTargetWeek = (array, date) => {
 }
 
 function getRandomIndex(array) {
-  for (let i = 0; i < array.length; i++) {
-  var randomIndex = array[Math.floor(Math.random() * array.length)];
-  }
-  return randomIndex;
+  return Math.floor(Math.random() * array.length)
 };
 
 if (typeof module !== 'undefined'){
