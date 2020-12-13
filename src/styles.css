@@ -1,4 +1,5 @@
 /* GENERAL RULES */
+
 body {
   align-items: center;
   background-color: #535454;
@@ -35,18 +36,26 @@ p {
 
 .back-button {
   margin-right: 30%;
+  border: none;
+  border-radius: 10px;
+  height: 100px;
+  margin-top: 40px;
 }
 
 .icon {
   background-color: white;
   margin-left: 30%;
+  border-radius: 10px;
+  height: 100px;
+  margin-top: 40px;
 }
 
 /* HOME */
 
 .home-dashboard,
 .hydration-dashboard,
-.sleep-dashboard {
+.sleep-dashboard,
+.activity-dashboard {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -60,7 +69,6 @@ p {
   color: #535454;
   display: flex;
   flex-direction: column;
-  height: 40%;
   text-align: center;
   width: 90%;
   margin-bottom: 10px;
@@ -82,11 +90,15 @@ p {
   border: none;
   border-radius: 10px;
   display: flex;
-  height: 40%;
   width: 90%;
   align-items: center;
   margin: 10px;
   justify-content: center;
+}
+
+.button-icon {
+  height: 100px;
+  padding: 10px;
 }
 
 /* HYDRATION */
