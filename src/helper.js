@@ -21,8 +21,17 @@ const getTargetWeek = (array, date) => {
   return week
 }
 
-module.exports = {
-  getAverage,
-  getTargetDay,
-  getTargetWeek
+function getRandomIndex(array) {
+  for (let i = 0; i < array.length; i++) {
+  var randomIndex = array[Math.floor(Math.random() * array.length)];
+  }
+  return randomIndex;
+};
+
+if (typeof module !== 'undefined'){
+  module.exports = {
+    getAverage,
+    getTargetDay,
+    getTargetWeek
+  }
 }
