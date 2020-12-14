@@ -1,5 +1,7 @@
 if (typeof require !== 'undefined') {
   User = require('../src/User');
+  helper = require('../src/helper')
+  getAverage = helper.getAverage
 }
 
 class UserRepository {

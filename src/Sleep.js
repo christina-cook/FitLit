@@ -1,79 +1,51 @@
+if (typeof require !== 'undefined') {
+  helper = require('../src/helper')
+  getAverage = helper.getAverage
+  getTargetDay = helper.getTargetDay
+  getTargetWeek = helper.getTargetWeek
+}
+
 class Sleep {
   constructor(sleepData) {
     this.sleepData = sleepData;
   }
 
   getAverageHrsSlept() {
-    const average = this.sleepData.reduce((sum, data) => {
-      return sum + data.hoursSlept;
-    }, 0) / this.sleepData.length;
+    const average = getAverage(this.sleepData, 'hoursSlept');
     return Math.round(10 * average) / 10;
   }
 
   getAverageSleepQuality() {
-    const average = this.sleepData.reduce((sum, data) => {
-      return sum + data.sleepQuality;
-    }, 0) / this.sleepData.length;
+    const average = getAverage(this.sleepData, 'sleepQuality');
     return Math.round(10 * average) / 10;
   }
 
   getDailyHrsSlept(date) {
-    const day = this.sleepData.find(data => {
-      return data.date === date;
-    });
+    const day = getTargetDay(this.sleepData, date)
     return day.hoursSlept;
   }
 
   getDailySleepQuality(date) {
-    const day = this.sleepData.find(data => {
-      return data.date === date;
-    });
+    const day = getTargetDay(this.sleepData, date)
     return day.sleepQuality;
   }
 
   getWeeklyHoursSlept(date) {
-    let targetDay;
-    this.sleepData.forEach(data => {
-      if (data.date === date) {
-        targetDay = this.sleepData.indexOf(data);
-      }
-    });
-    const week = this.sleepData.filter((data, index) => {
-      return (index <= targetDay && index >= (targetDay - 6));
-    });
+    const week = getTargetWeek(this.sleepData, date)
 
     return week.map(day => day.hoursSlept);
   }
 
   getWeeklySleepQuality(date) {
-    let targetDay;
-    this.sleepData.forEach(data => {
-      if (data.date === date) {
-        targetDay = this.sleepData.indexOf(data);
-      }
-    });
-    const week = this.sleepData.filter((data, index) => {
-      return (index <= targetDay && index >= (targetDay - 6));
-    });
+    const week = getTargetWeek(this.sleepData, date)
 
     return week.map(day => day.sleepQuality);
   }
 
   getWeeklyAverageSleepQuality(date) {
-    let targetDay;
-    this.sleepData.forEach(data => {
-      if (data.date === date) {
-        targetDay = this.sleepData.indexOf(data);
-      }
-    });
-    const week = this.sleepData.filter((data, index) => {
-      return (index <= targetDay && index >= (targetDay - 6));
-    });
+    const week = getTargetWeek(this.sleepData, date)
 
-    const average = week.reduce((sum, data) => {
-      return sum + data.sleepQuality;
-    }, 0) / week.length;
-
+    const average = getAverage(week, 'sleepQuality');
     return Math.round(10 * average) / 10;
   }
 }
