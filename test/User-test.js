@@ -3,6 +3,7 @@ const expect = chai.expect;
 const User = require('../src/User');
 const Hydration = require('../src/Hydration');
 const Sleep = require('../src/Sleep');
+const Activity = require('../src/Activity');
 
 describe('User', () => {
   let user3, user4, hydrationData, sleepData;
@@ -173,4 +174,18 @@ describe('User', () => {
       "sleepQuality": 4.7
     }])
   });
+
+  it('Should fetch Activity data', () => {
+
+  });
+
+  it('Should have a Activity property', () => {
+
+  });
+
+  it('Should have a different Activity property', () => {
+
+    }])
+  });
+
 });
