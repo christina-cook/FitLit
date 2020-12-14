@@ -280,19 +280,19 @@ describe('UserRepository', () => {
     expect(userRepository.findHighestSleepUser("2019/06/16")).to.eql([user1, user3]);
   });
 
-  it('Should fetch all user activity' () => {
+  it('Should fetch all user activity', () => {
 
   });
 
-  it('Should get the daily average steps taken' () => {
+  it('Should get the daily average steps taken', () => {
 
   });
 
-  it('Should get the daily average stairs climbed' () => {
+  it('Should get the daily average stairs climbed', () => {
 
   });
 
-  it('Should get the daily average minutes active' () => {
+  it('Should get the daily average minutes active', () => {
 
   });
 });
