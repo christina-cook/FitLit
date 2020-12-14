@@ -55,8 +55,8 @@ describe('User', () => {
       {
         "userID": 3,
         "date": "2019/06/15",
-        "numSteps": 3577,
-        "minutesActive": 90,
+        "numSteps": 90,
+        "minutesActive": 140,
         "flightsOfStairs": 16
       },
       {
@@ -209,8 +209,8 @@ describe('User', () => {
       {
         "userID": 3,
         "date": "2019/06/15",
-        "numSteps": 3577,
-        "minutesActive": 90,
+        "numSteps": 90,
+        "minutesActive": 140,
         "flightsOfStairs": 16
       },
       {
@@ -234,15 +234,18 @@ describe('User', () => {
   // });
 
   it('Should get daily miles walked', () => {
+    user3.fetchActivity(activityData);
     expect(user3.getDailyMilesWalked("2019/06/17")).to.equal(2.8)
   });
 
   it('Should determine if daily goal is reached', () => {
+    user3.fetchActivity(activityData);
     expect(user3.isGoalReached("2019/06/15")).to.equal(false);
     expect(user3.isGoalReached("2019/06/17")).to.equal(true);
   });
 
   it('Should find all days when the goal was reached', () => {
+    user3.fetchActivity(activityData);
     expect(user3.getAllDaysGoalReached()).to.eql([{
       "userID": 3,
       "date": "2019/06/16",

@@ -1,6 +1,7 @@
 if (typeof require !== 'undefined') {
   Hydration = require('../src/Hydration');
   Sleep = require('../src/Sleep');
+  Activity = require('../src/Activity');
 }
 
 class User {
@@ -32,6 +33,29 @@ class User {
     const sameId = sleepData.filter(data => data.userID === this.id);
 
     this.sleep = new Sleep(sameId);
+  }
+
+  fetchActivity(activityData) {
+    const sameId = activityData.filter(data => data.userID === this.id);
+
+    this.activity = new Activity(sameId);
+  }
+
+  getDailyMilesWalked(date) {
+    const stepsToMile = 5280 / this.strideLength;
+    const milesWalked = this.activity.getDailySteps(date) / stepsToMile;
+    return Math.round(10 * milesWalked) / 10;
+  }
+
+  isGoalReached(date) {
+    return this.activity.getDailySteps(date) >= this.dailyStepGoal;
+  }
+
+  getAllDaysGoalReached() {
+    const daysGoalReached = this.activity.activityData.filter(day => {
+      return this.isGoalReached(day.date);
+    })
+    return daysGoalReached;
   }
 }
 
