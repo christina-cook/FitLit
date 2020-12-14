@@ -15,6 +15,7 @@ class User {
     this.friends = friends;
     this.hydration;
     this.sleep;
+    this.activity;
   }
 
   returnFirstName() {
