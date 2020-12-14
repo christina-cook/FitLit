@@ -185,7 +185,18 @@ describe('User', () => {
 
   it('Should have a different Activity property', () => {
 
-    }])
+  });
+
+  it('Should get daily miles walked', () => {
+
+  });
+
+  it('Should determine if daily goal is reached', () => {
+
+  });
+
+  it('Should find all days when the goal was reached', () => {
+
   });
 
 });
