@@ -85,6 +85,15 @@ const weeklySleepChart = new Chart(weeklyHoursSlept, {
         '#FCEDA9'
       ],
     }]
+  },
+  options: {
+    legend: {
+      onClick: null,
+      labels: {
+        boxWidth: 0,
+        fontSize: 20,
+      }
+    },
   }
 });
 
@@ -105,6 +114,15 @@ const weeklySleepQualityChart = new Chart(weeklySleepQuality, {
         '#FCEDA9'
       ],
     }]
+  },
+  options: {
+    legend: {
+      onClick: null,
+      labels: {
+        boxWidth: 0,
+        fontSize: 20,
+      }
+    }
   }
 });
 
