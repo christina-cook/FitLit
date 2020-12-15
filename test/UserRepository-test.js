@@ -4,9 +4,10 @@ const UserRepository = require('../src/UserRepository');
 const User = require('../src/User');
 const Hydration = require('../src/Hydration');
 const Sleep = require('../src/Sleep');
+const Activity = require('../src/Activity');
 
 describe('UserRepository', () => {
-  let users, userRepository, hydrationData, sleepData;
+  let users, userRepository, hydrationData, sleepData, activityData;
 
   beforeEach(() => {
     users = [{
@@ -209,6 +210,50 @@ describe('UserRepository', () => {
       "sleepQuality": 1
     }];
 
+    activityData = [
+      {
+        "userID": 1,
+        "date": "2019/06/15",
+        "numSteps": 3577,
+        "minutesActive": 140,
+        "flightsOfStairs": 16
+      },
+      {
+        "userID": 2,
+        "date": "2019/06/15",
+        "numSteps": 4294,
+        "minutesActive": 138,
+        "flightsOfStairs": 10
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/15",
+        "numSteps": 7402,
+        "minutesActive": 116,
+        "flightsOfStairs": 33
+      },
+      {
+        "userID": 1,
+        "date": "2019/06/16",
+        "numSteps": 3486,
+        "minutesActive": 114,
+        "flightsOfStairs": 32
+      },
+      {
+        "userID": 2,
+        "date": "2019/06/16",
+        "numSteps": 11374,
+        "minutesActive": 213,
+        "flightsOfStairs": 13
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/16",
+        "numSteps": 14810,
+        "minutesActive": 287,
+        "flightsOfStairs": 18
+      }];
+
     userRepository = new UserRepository(users);
   })
 
@@ -281,18 +326,32 @@ describe('UserRepository', () => {
   });
 
   it('Should fetch all user activity', () => {
+    userRepository.createUsers();
+    userRepository.fetchAllActivity(activityData);
 
+    userRepository.users.forEach(user => {
+      expect(user.activity).to.be.an.instanceof(Activity);
+    });
   });
 
   it('Should get the daily average steps taken', () => {
+    userRepository.createUsers();
+    userRepository.fetchAllActivity(activityData);
 
+    expect(userRepository.getDailyAverageSteps("2019/06/15")).to.equal(5091);
   });
 
   it('Should get the daily average stairs climbed', () => {
+    userRepository.createUsers();
+    userRepository.fetchAllActivity(activityData);
 
+    expect(userRepository.getDailyAverageStairs("2019/06/15")).to.equal(19);
   });
 
   it('Should get the daily average minutes active', () => {
+    userRepository.createUsers();
+    userRepository.fetchAllActivity(activityData);
 
+    expect(userRepository.getDailyAverageMinutes("2019/06/16")).to.equal(205);
   });
 });
