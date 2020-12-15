@@ -3,9 +3,10 @@ const expect = chai.expect;
 const User = require('../src/User');
 const Hydration = require('../src/Hydration');
 const Sleep = require('../src/Sleep');
+const Activity = require('../src/Activity');
 
 describe('User', () => {
-  let user3, user4, hydrationData, sleepData;
+  let user3, user4, hydrationData, sleepData, activityData;
 
   beforeEach(() => {
     user3 = new User(3, 'Briarhill Danton',
@@ -48,7 +49,30 @@ describe('User', () => {
       "date": "2019/06/16",
       "hoursSlept": 7,
       "sleepQuality": 4.7
-    }]
+    }];
+
+    activityData = [
+      {
+        "userID": 3,
+        "date": "2019/06/15",
+        "numSteps": 90,
+        "minutesActive": 140,
+        "flightsOfStairs": 16
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/16",
+        "numSteps": 4294,
+        "minutesActive": 138,
+        "flightsOfStairs": 10
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/17",
+        "numSteps": 7402,
+        "minutesActive": 116,
+        "flightsOfStairs": 33
+      }];
   });
 
   it('should have an id', () => {
@@ -173,4 +197,69 @@ describe('User', () => {
       "sleepQuality": 4.7
     }])
   });
+
+  it('Should fetch Activity data', () => {
+    user3.fetchActivity(activityData);
+    expect(user3.activity).to.be.an.instanceof(Activity);
+  });
+
+  it('Should have a Activity property', () => {
+    user3.fetchActivity(activityData);
+    expect(user3.activity.activityData).to.eql([
+      {
+        "userID": 3,
+        "date": "2019/06/15",
+        "numSteps": 90,
+        "minutesActive": 140,
+        "flightsOfStairs": 16
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/16",
+        "numSteps": 4294,
+        "minutesActive": 138,
+        "flightsOfStairs": 10
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/17",
+        "numSteps": 7402,
+        "minutesActive": 116,
+        "flightsOfStairs": 33
+      }]);
+  });
+
+  // it('Should have a different Activity property', () => {
+  //
+  // });
+
+  it('Should get daily miles walked', () => {
+    user3.fetchActivity(activityData);
+    expect(user3.getDailyMilesWalked("2019/06/17")).to.equal(2.8)
+  });
+
+  it('Should determine if daily goal is reached', () => {
+    user3.fetchActivity(activityData);
+    expect(user3.isGoalReached("2019/06/15")).to.equal(false);
+    expect(user3.isGoalReached("2019/06/17")).to.equal(true);
+  });
+
+  it('Should find all days when the goal was reached', () => {
+    user3.fetchActivity(activityData);
+    expect(user3.getAllDaysGoalReached()).to.eql([{
+      "userID": 3,
+      "date": "2019/06/16",
+      "numSteps": 4294,
+      "minutesActive": 138,
+      "flightsOfStairs": 10
+    },
+    {
+      "userID": 3,
+      "date": "2019/06/17",
+      "numSteps": 7402,
+      "minutesActive": 116,
+      "flightsOfStairs": 33
+    }]);
+  });
+
 });

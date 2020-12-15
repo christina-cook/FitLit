@@ -3,7 +3,7 @@ userRepository.createUsers();
 userRepository.fetchAllHydration(hydrationData);
 userRepository.fetchAllSleep(sleepData);
 
-const user = userRepository.users[0];
+const user = userRepository.users[getRandomIndex(userRepository.users)]
 
 const today = "2019/09/22";
 const week = ["16", "17", "18", "19", "20", "21", "22"];
