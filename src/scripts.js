@@ -32,11 +32,14 @@ const sleepQuality = document.querySelector('.sleep-quality');
 const weeklyHoursSlept = document.querySelector('.weekly-hours-slept');
 const weeklySleepQuality = document.querySelector('.weekly-sleep-quality');
 
-
-const activityDashboard = document.querySelector('.activity-dashboard')
+const activityDashboard = document.querySelector('.activity-dashboard');
 const weeklySteps = document.querySelector('.weekly-steps');
 const weeklyStairs = document.querySelector('.weekly-stairs');
 const weeklyMinutes = document.querySelector('.weekly-minutes');
+const dailySteps = document.querySelector('.daily-steps');
+const dailyMinutes = document.querySelector('.daily-minutes');
+const dailyDistance = document.querySelector('.daily-distance');
+const dailyFlights = document.querySelector('.daily-flights');
 
 welcomeMessage.innerText = `Welcome ${user.returnFirstName()}!`;
 userInfo.innerText = `${user.address}\n${user.email}`;
@@ -55,6 +58,10 @@ sleepButton.addEventListener('click', toggleSleep);
 activityButton.addEventListener('click', toggleActivity);
 backButton.addEventListener('click', toggleBack);
 
+dailySteps.innerText = `Steps today: ${user.activity.getDailySteps(today)}\nUser average: ${userRepository.getDailyAverageSteps(today)}`;
+dailyMinutes.innerText = `Minutes Active today: ${user.activity.getDailyMinutesActive(today)}\nUser average: ${userRepository.getDailyAverageMinutes(today)}`;
+dailyDistance.innerText = `Miles Walked today: ${user.getDailyMilesWalked(today)}`;
+dailyFlights.innerText = `Flights climbed today: ${user.activity.getDailyStairsClimbed(today)}\nUser average: ${userRepository.getDailyAverageStairs(today)}`
 weeklySteps.innerText = `${user.activity.getWeeklyStepCount(today)}\n${week}`;
 weeklyStairs.innerText = `${user.activity.getWeeklyStairsClimbed(today)}\n${week}`;
 weeklyMinutes.innerText = `${user.activity.getWeeklyMinutesActive(today)}\n${week}`;
