@@ -65,6 +65,15 @@ const hydrationChart = new Chart(weeklyHydration, {
         '#FCEDA9'
       ],
     }]
+  },
+  options: {
+    legend: {
+      onClick: null,
+      labels: {
+        boxWidth: 0,
+        fontSize: 20,
+      }
+    },
   }
 });
 
