@@ -2,6 +2,7 @@ const userRepository = new UserRepository(userData);
 userRepository.createUsers();
 userRepository.fetchAllHydration(hydrationData);
 userRepository.fetchAllSleep(sleepData);
+userRepository.fetchAllActivity(activityData);
 
 const user = userRepository.users[getRandomIndex(userRepository.users)]
 
@@ -30,6 +31,7 @@ const hoursSlept = document.querySelector('.hours-slept');
 const sleepQuality = document.querySelector('.sleep-quality');
 const weeklyHoursSlept = document.querySelector('.weekly-hours-slept');
 const weeklySleepQuality = document.querySelector('.weekly-sleep-quality');
+
 
 const activityDashboard = document.querySelector('.activity-dashboard')
 const weeklySteps = document.querySelector('.weekly-steps');
