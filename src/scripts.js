@@ -24,13 +24,14 @@ const activityButton = document.querySelector('.activity-button');
 
 const hydrationDashboard = document.querySelector('.hydration-dashboard');
 const dailyHydration = document.querySelector('.daily-hydration');
+const averageHydration = document.querySelector('.average-hydration');
 const weeklyHydration = document.querySelector('.weekly-hydration').getContext('2d');
 
 const sleepDashboard = document.querySelector('.sleep-dashboard');
 const hoursSlept = document.querySelector('.hours-slept');
 const sleepQuality = document.querySelector('.sleep-quality');
-const weeklyHoursSlept = document.querySelector('.weekly-hours-slept');
-const weeklySleepQuality = document.querySelector('.weekly-sleep-quality');
+const weeklyHoursSlept = document.querySelector('.weekly-hours-slept').getContext('2d');
+const weeklySleepQuality = document.querySelector('.weekly-sleep-quality').getContext('2d');
 
 const activityDashboard = document.querySelector('.activity-dashboard');
 const weeklySteps = document.querySelector('.weekly-steps');
@@ -45,8 +46,7 @@ welcomeMessage.innerText = `Welcome ${user.returnFirstName()}!`;
 userInfo.innerText = `${user.address}\n${user.email}`;
 stepGoalCompare.innerText = `Your step goal is ${user.dailyStepGoal} steps per day.\nThe average goal is ${userRepository.averageStepGoal()} steps per day.`
 
-dailyHydration.innerText = user.hydration.getDailyOz(today);
-// weeklyHydration.innerText = `${user.hydration.getWeeklyOz(today)}\n${week}`;
+dailyHydration.innerText = `You've drank ${user.hydration.getDailyOz(today)}oz of water today\nOn average you drink ${user.hydration.getAverageOz()}oz per day`;
 
 const hydrationChart = new Chart(weeklyHydration, {
   type: 'bar',
@@ -68,10 +68,48 @@ const hydrationChart = new Chart(weeklyHydration, {
   }
 });
 
+const weeklySleepChart = new Chart(weeklyHoursSlept, {
+  type: 'bar',
+  data: {
+    labels: week,
+    datasets: [{
+      label: 'Hours of Sleep',
+      data: user.sleep.getWeeklyHoursSlept(today),
+      backgroundColor: [
+        '#A9B9FC',
+        '#C3A9FC',
+        '#ECA9FC',
+        '#FCA9E3',
+        '#FCA9B9',
+        '#FCC3A9',
+        '#FCEDA9'
+      ],
+    }]
+  }
+});
+
+const weeklySleepQualityChart = new Chart(weeklySleepQuality, {
+  type: 'bar',
+  data: {
+    labels: week,
+    datasets: [{
+      label: 'Sleep Quality',
+      data: user.sleep.getWeeklySleepQuality(today),
+      backgroundColor: [
+        '#A9B9FC',
+        '#C3A9FC',
+        '#ECA9FC',
+        '#FCA9E3',
+        '#FCA9B9',
+        '#FCC3A9',
+        '#FCEDA9'
+      ],
+    }]
+  }
+});
+
 hoursSlept.innerText = `Last night you slept ${user.sleep.getDailyHrsSlept(today)} hours\nYour average is ${user.sleep.getAverageHrsSlept()} hours`;
 sleepQuality.innerText = `Your quality of sleep last night was ${user.sleep.getDailySleepQuality(today)}/5\nYour average is ${user.sleep.getAverageSleepQuality()}/5`;
-weeklyHoursSlept.innerText = `${user.sleep.getWeeklyHoursSlept(today)}\n${week}`;
-weeklySleepQuality.innerText = `${user.sleep.getWeeklySleepQuality(today)}\n${week}`;
 
 hydrationButton.addEventListener('click', toggleHydration);
 sleepButton.addEventListener('click', toggleSleep);
