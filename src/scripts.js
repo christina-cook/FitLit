@@ -7,7 +7,7 @@ userRepository.fetchAllActivity(activityData);
 const user = userRepository.users[getRandomIndex(userRepository.users)]
 
 const today = "2019/09/22";
-const week = ["16", "17", "18", "19", "20", "21", "22"];
+const week = ["9/16", "9/17", "9/18", "9/19", "9/20", "9/21", "9/22"];
 
 const backButton = document.querySelector('.back-button');
 const hydrationIcon = document.querySelector('.hydration-icon');
@@ -24,7 +24,7 @@ const activityButton = document.querySelector('.activity-button');
 
 const hydrationDashboard = document.querySelector('.hydration-dashboard');
 const dailyHydration = document.querySelector('.daily-hydration');
-const weeklyHydration = document.querySelector('.weekly-hydration');
+const weeklyHydration = document.querySelector('.weekly-hydration').getContext('2d');
 
 const sleepDashboard = document.querySelector('.sleep-dashboard');
 const hoursSlept = document.querySelector('.hours-slept');
@@ -46,7 +46,27 @@ userInfo.innerText = `${user.address}\n${user.email}`;
 stepGoalCompare.innerText = `Your step goal is ${user.dailyStepGoal} steps per day.\nThe average goal is ${userRepository.averageStepGoal()} steps per day.`
 
 dailyHydration.innerText = user.hydration.getDailyOz(today);
-weeklyHydration.innerText = `${user.hydration.getWeeklyOz(today)}\n${week}`;
+// weeklyHydration.innerText = `${user.hydration.getWeeklyOz(today)}\n${week}`;
+
+const hydrationChart = new Chart(weeklyHydration, {
+  type: 'bar',
+  data: {
+    labels: week,
+    datasets: [{
+      label: 'Daily Ounces',
+      data: user.hydration.getWeeklyOz(today),
+      backgroundColor: [
+        '#A9B9FC',
+        '#C3A9FC',
+        '#ECA9FC',
+        '#FCA9E3',
+        '#FCA9B9',
+        '#FCC3A9',
+        '#FCEDA9'
+      ],
+    }]
+  }
+});
 
 hoursSlept.innerText = `Last night you slept ${user.sleep.getDailyHrsSlept(today)} hours\nYour average is ${user.sleep.getAverageHrsSlept()} hours`;
 sleepQuality.innerText = `Your quality of sleep last night was ${user.sleep.getDailySleepQuality(today)}/5\nYour average is ${user.sleep.getAverageSleepQuality()}/5`;
