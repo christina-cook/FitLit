@@ -32,6 +32,9 @@ const weeklyHoursSlept = document.querySelector('.weekly-hours-slept');
 const weeklySleepQuality = document.querySelector('.weekly-sleep-quality');
 
 const activityDashboard = document.querySelector('.activity-dashboard')
+const weeklySteps = document.querySelector('.weekly-steps');
+const weeklyStairs = document.querySelector('.weekly-stairs');
+const weeklyMinutes = document.querySelector('.weekly-minutes');
 
 welcomeMessage.innerText = `Welcome ${user.returnFirstName()}!`;
 userInfo.innerText = `${user.address}\n${user.email}`;
@@ -49,6 +52,11 @@ hydrationButton.addEventListener('click', toggleHydration);
 sleepButton.addEventListener('click', toggleSleep);
 activityButton.addEventListener('click', toggleActivity);
 backButton.addEventListener('click', toggleBack);
+
+weeklySteps.innerText = `${user.activity.getWeeklyStepCount(today)}\n${week}`;
+weeklyStairs.innerText = `${user.activity.getWeeklyStairsClimbed(today)}\n${week}`;
+weeklyMinutes.innerText = `${user.activity.getWeeklyMinutesActive(today)}\n${week}`;
+
 
 function toggleHydration() {
   homeDashboard.classList.toggle('hidden');
