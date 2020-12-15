@@ -1,4 +1,5 @@
 /* GENERAL RULES */
+
 body {
   align-items: center;
   background-color: #535454;
@@ -35,18 +36,26 @@ p {
 
 .back-button {
   margin-right: 30%;
+  border: none;
+  border-radius: 10px;
+  height: 100px;
+  margin-top: 40px;
 }
 
 .icon {
   background-color: white;
   margin-left: 30%;
+  border-radius: 10px;
+  height: 100px;
+  margin-top: 40px;
 }
 
 /* HOME */
 
 .home-dashboard,
 .hydration-dashboard,
-.sleep-dashboard {
+.sleep-dashboard,
+.activity-dashboard {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -60,7 +69,6 @@ p {
   color: #535454;
   display: flex;
   flex-direction: column;
-  height: 40%;
   text-align: center;
   width: 90%;
   margin-bottom: 10px;
@@ -82,52 +90,76 @@ p {
   border: none;
   border-radius: 10px;
   display: flex;
-  height: 40%;
   width: 90%;
   align-items: center;
   margin: 10px;
   justify-content: center;
 }
 
-/* HYDRATION */
+.button-icon {
+  height: 100px;
+  padding: 10px;
+}
 
-.hydration-dashboard {
+/* DASHBOARDS */
+
+.hydration-dashboard,
+.sleep-dashboard,
+.activity-dashboard {
   font-size: 6vmin;
   text-align: center;
   width: 85%;
 }
 
-.daily-hydration {
-  min-height: 30%;
-  width: 90%;
+.hydration,
+.sleep,
+.activity {
   background-color: white;
   border-radius: 10px;
   margin: 10px;
+}
+
+/* HYDRATION */
+
+.daily-hydration {
+  min-height: 30%;
+  width: 90%;
 }
 
 .weekly-hydration {
   height: 70%;
   width: 90%;
-  background-color: white;
-  border-radius: 10px;
-  margin: 10px;
 }
 
 /* SLEEP */
-.sleep-dashboard {
-  font-size: 6vmin;
-  text-align: center;
-  width: 85%;
-}
 
 .sleep {
-  background-color: white;
-  border: none;
-  border-radius: 10px;
-  display: flex;
   height: 25%;
   width: 90%;
+}
+
+/* ACTIVITY */
+
+.daily-activity,
+.weekly-activity {
+  height: 50%;
+}
+
+.daily-activity {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.weekly-activity {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  margin: 10px;
-  justify-content: center;
+  width: 90%;
+}
+
+.weekly-steps,
+.weekly-stairs,
+.weekly-minutes {
+  width: 90%;
+  height: 30%;
 }

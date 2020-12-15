@@ -5,21 +5,21 @@ userRepository.fetchAllSleep(sleepData);
 
 const user = userRepository.users[getRandomIndex(userRepository.users)]
 
-const today = "2019/09/22"
-const week = ["16", "17", "18", "19", "20", "21", "22"]
+const today = "2019/09/22";
+const week = ["16", "17", "18", "19", "20", "21", "22"];
 
-
-const hydrationButton = document.querySelector('.hydration-button');
 const backButton = document.querySelector('.back-button');
 const hydrationIcon = document.querySelector('.hydration-icon');
 const sleepIcon = document.querySelector('.sleep-icon');
+const activityIcon = document.querySelector('.activity-icon');
 
 const welcomeMessage = document.querySelector('.welcome-message');
 const userInfo = document.querySelector('.user-info');
 const stepGoalCompare = document.querySelector('.step-goal-compare');
 const homeDashboard = document.querySelector('.home-dashboard');
+const hydrationButton = document.querySelector('.hydration-button');
 const sleepButton = document.querySelector('.sleep-button');
-const activityButton = document.querySelector('.activityButton');
+const activityButton = document.querySelector('.activity-button');
 
 const hydrationDashboard = document.querySelector('.hydration-dashboard');
 const dailyHydration = document.querySelector('.daily-hydration');
@@ -31,6 +31,10 @@ const sleepQuality = document.querySelector('.sleep-quality');
 const weeklyHoursSlept = document.querySelector('.weekly-hours-slept');
 const weeklySleepQuality = document.querySelector('.weekly-sleep-quality');
 
+const activityDashboard = document.querySelector('.activity-dashboard')
+const weeklySteps = document.querySelector('.weekly-steps');
+const weeklyStairs = document.querySelector('.weekly-stairs');
+const weeklyMinutes = document.querySelector('.weekly-minutes');
 
 welcomeMessage.innerText = `Welcome ${user.returnFirstName()}!`;
 userInfo.innerText = `${user.address}\n${user.email}`;
@@ -46,7 +50,13 @@ weeklySleepQuality.innerText = `${user.sleep.getWeeklySleepQuality(today)}\n${we
 
 hydrationButton.addEventListener('click', toggleHydration);
 sleepButton.addEventListener('click', toggleSleep);
+activityButton.addEventListener('click', toggleActivity);
 backButton.addEventListener('click', toggleBack);
+
+weeklySteps.innerText = `${user.activity.getWeeklyStepCount(today)}\n${week}`;
+weeklyStairs.innerText = `${user.activity.getWeeklyStairsClimbed(today)}\n${week}`;
+weeklyMinutes.innerText = `${user.activity.getWeeklyMinutesActive(today)}\n${week}`;
+
 
 function toggleHydration() {
   homeDashboard.classList.toggle('hidden');
@@ -62,10 +72,19 @@ function toggleSleep() {
   sleepIcon.classList.toggle('hidden');
 }
 
+function toggleActivity() {
+  homeDashboard.classList.toggle('hidden');
+  activityDashboard.classList.toggle('hidden');
+  backButton.classList.toggle('hidden');
+  activityIcon.classList.toggle('hidden');
+}
+
 function toggleBack() {
   if (!hydrationDashboard.classList.contains('hidden')) {
     toggleHydration();
   } else if (!sleepDashboard.classList.contains('hidden')) {
     toggleSleep();
+  } else if (!activityDashboard.classList.contains('hidden')) {
+    toggleActivity();
   }
 }
