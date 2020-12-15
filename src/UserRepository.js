@@ -52,8 +52,6 @@ class UserRepository {
   }
 
   findHighestSleepUser(date) {
-    // sort sleep hours from greatest to least to find highest value
-    // filter all the users with the highest value
     const sortedUsers = this.users.sort((a, b) => {
       return b.sleep.getDailyHrsSlept(date) - a.sleep.getDailyHrsSlept(date);
     })
@@ -61,6 +59,43 @@ class UserRepository {
     return sortedUsers.filter(user => {
       return user.sleep.getDailyHrsSlept(date) === mostSleep;
     })
+  }
+
+  fetchAllActivity(activityData) {
+    this.users.forEach(user => user.fetchActivity(activityData));
+  }
+
+  getDailyAverageSteps(date) {
+    const steps = [];
+
+    this.users.forEach(user => steps.push(user.activity.getDailySteps(date)));
+
+    const averageSteps = steps.reduce((sum, step) => {
+      return sum + step;
+    }, 0) / steps.length;
+    return averageSteps;
+  }
+
+  getDailyAverageStairs(date) {
+    const stairs = [];
+
+    this.users.forEach(user => stairs.push(user.activity.getDailyStairsClimbed(date)));
+
+    const averageStairs = stairs.reduce((sum, stairCount) => {
+      return sum + stairCount;
+    }, 0) / stairs.length;
+    return Math.floor(averageStairs);
+  }
+
+  getDailyAverageMinutes(date) {
+    const minutes = [];
+
+    this.users.forEach(user => minutes.push(user.activity.getDailyMinutesActive(date)));
+
+    const averageMinutes = minutes.reduce((sum, minutes) => {
+      return sum + minutes;
+    }, 0) / minutes.length;
+    return Math.round(averageMinutes);
   }
 }
 
