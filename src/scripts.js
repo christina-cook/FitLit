@@ -1,6 +1,6 @@
 const userRepository = new UserRepository(userData);
 
-const user = userRepository.users[getRandomIndex(userRepository.users)]
+const user = userRepository.users[getRandomIndex(userRepository.users)];
 
 const today = "2019/09/22";
 const week = ["9/16", "9/17", "9/18", "9/19", "9/20", "9/21", "9/22"];
@@ -69,11 +69,10 @@ function updateUserRepo() {
   userRepository.fetchAllActivity(activityData);
 }
 
-
 function updateMainDash() {
   welcomeMessage.innerText = `Welcome ${user.returnFirstName()}!`;
   userInfo.innerText = `${user.address}\n${user.email}`;
-  stepGoalCompare.innerText = `Your step goal is ${user.dailyStepGoal} steps per day.\nThe average goal is ${userRepository.averageStepGoal()} steps per day.`
+  stepGoalCompare.innerText = `Your step goal is ${user.dailyStepGoal} steps per day.\nThe average goal is ${userRepository.averageStepGoal()} steps per day.`;
 }
 
 function updateHydrationDash() {
