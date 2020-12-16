@@ -7,7 +7,7 @@ userRepository.fetchAllActivity(activityData);
 const user = userRepository.users[getRandomIndex(userRepository.users)]
 
 const today = "2019/09/22";
-const week = ["16", "17", "18", "19", "20", "21", "22"];
+const week = ["9/16", "9/17", "9/18", "9/19", "9/20", "9/21", "9/22"];
 
 const backButton = document.querySelector('.back-button');
 const hydrationIcon = document.querySelector('.hydration-icon');
@@ -23,49 +23,227 @@ const sleepButton = document.querySelector('.sleep-button');
 const activityButton = document.querySelector('.activity-button');
 
 const hydrationDashboard = document.querySelector('.hydration-dashboard');
-const dailyHydration = document.querySelector('.daily-hydration');
-const weeklyHydration = document.querySelector('.weekly-hydration');
+const ouncesToday = document.getElementById('ounces-today');
+const avgOunces = document.getElementById('avg-ounces-today');
+const weeklyHydration = document.querySelector('.hydration-chart').getContext('2d');
 
 const sleepDashboard = document.querySelector('.sleep-dashboard');
-const hoursSlept = document.querySelector('.hours-slept');
-const sleepQuality = document.querySelector('.sleep-quality');
-const weeklyHoursSlept = document.querySelector('.weekly-hours-slept');
-const weeklySleepQuality = document.querySelector('.weekly-sleep-quality');
+const hoursToday = document.getElementById('hours-today');
+const avgHours = document.getElementById('avg-hours-today');
+const qualityToday = document.getElementById('quality-today');
+const avgQuality = document.getElementById('avg-quality-today');
+const weeklyHoursSlept = document.querySelector('.weekly-hours-chart').getContext('2d');
+const weeklySleepQuality = document.querySelector('.weekly-quality-chart').getContext('2d');
 
 const activityDashboard = document.querySelector('.activity-dashboard');
-const weeklySteps = document.querySelector('.weekly-steps');
-const weeklyStairs = document.querySelector('.weekly-stairs');
-const weeklyMinutes = document.querySelector('.weekly-minutes');
-const dailySteps = document.querySelector('.daily-steps');
-const dailyMinutes = document.querySelector('.daily-minutes');
-const dailyDistance = document.querySelector('.daily-distance');
-const dailyFlights = document.querySelector('.daily-flights');
+const weeklySteps = document.querySelector('.weekly-steps-chart').getContext('2d');
+const weeklyStairs = document.querySelector('.weekly-flights-chart').getContext('2d');
+const weeklyMinutes = document.querySelector('.weekly-minutes-chart').getContext('2d');
+const stepsToday = document.getElementById('steps-today');
+const avgStepsToday = document.getElementById('avg-steps-today');
+const minutesToday = document.getElementById('minutes-today');
+const avgMinutesToday = document.getElementById('avg-minutes-today');
+const milesToday = document.getElementById('miles-today');
+const flightsToday = document.getElementById('flights-today');
+const avgFlightsToday = document.getElementById('avg-flights-today');
 
 welcomeMessage.innerText = `Welcome ${user.returnFirstName()}!`;
 userInfo.innerText = `${user.address}\n${user.email}`;
 stepGoalCompare.innerText = `Your step goal is ${user.dailyStepGoal} steps per day.\nThe average goal is ${userRepository.averageStepGoal()} steps per day.`
 
-dailyHydration.innerText = user.hydration.getDailyOz(today);
-weeklyHydration.innerText = `${user.hydration.getWeeklyOz(today)}\n${week}`;
+ouncesToday.innerText = user.hydration.getDailyOz(today);
+avgOunces.innerText = user.hydration.getAverageOz();
 
-hoursSlept.innerText = `Last night you slept ${user.sleep.getDailyHrsSlept(today)} hours\nYour average is ${user.sleep.getAverageHrsSlept()} hours`;
-sleepQuality.innerText = `Your quality of sleep last night was ${user.sleep.getDailySleepQuality(today)}/5\nYour average is ${user.sleep.getAverageSleepQuality()}/5`;
-weeklyHoursSlept.innerText = `${user.sleep.getWeeklyHoursSlept(today)}\n${week}`;
-weeklySleepQuality.innerText = `${user.sleep.getWeeklySleepQuality(today)}\n${week}`;
+const hydrationChart = new Chart(weeklyHydration, {
+  type: 'bar',
+  data: {
+    labels: week,
+    datasets: [{
+      label: 'Daily Ounces',
+      data: user.hydration.getWeeklyOz(today),
+      backgroundColor: [
+        '#A9B9FC',
+        '#C3A9FC',
+        '#ECA9FC',
+        '#FCA9E3',
+        '#FCA9B9',
+        '#FCC3A9',
+        '#FCEDA9'
+      ],
+    }]
+  },
+  options: {
+    legend: {
+      onClick: null,
+      labels: {
+        boxWidth: 0,
+        fontSize: 20,
+      }
+    },
+  }
+});
+
+const weeklySleepChart = new Chart(weeklyHoursSlept, {
+  type: 'bar',
+  data: {
+    labels: week,
+    datasets: [{
+      label: 'Hours of Sleep',
+      data: user.sleep.getWeeklyHoursSlept(today),
+      backgroundColor: [
+        '#A9B9FC',
+        '#C3A9FC',
+        '#ECA9FC',
+        '#FCA9E3',
+        '#FCA9B9',
+        '#FCC3A9',
+        '#FCEDA9'
+      ],
+    }]
+  },
+  options: {
+    legend: {
+      onClick: null,
+      labels: {
+        boxWidth: 0,
+        fontSize: 20,
+      }
+    },
+  }
+});
+
+const weeklySleepQualityChart = new Chart(weeklySleepQuality, {
+  type: 'bar',
+  data: {
+    labels: week,
+    datasets: [{
+      label: 'Sleep Quality',
+      data: user.sleep.getWeeklySleepQuality(today),
+      backgroundColor: [
+        '#A9B9FC',
+        '#C3A9FC',
+        '#ECA9FC',
+        '#FCA9E3',
+        '#FCA9B9',
+        '#FCC3A9',
+        '#FCEDA9'
+      ],
+    }]
+  },
+  options: {
+    legend: {
+      onClick: null,
+      labels: {
+        boxWidth: 0,
+        fontSize: 20,
+      }
+    }
+  }
+});
+
+
+hoursToday.innerText = user.sleep.getDailyHrsSlept(today);
+avgHours.innerText = user.sleep.getAverageHrsSlept();
+qualityToday.innerText = `${user.sleep.getDailySleepQuality(today)}/5`;
+avgQuality.innerText = `${user.sleep.getAverageSleepQuality()}/5`;
 
 hydrationButton.addEventListener('click', toggleHydration);
 sleepButton.addEventListener('click', toggleSleep);
 activityButton.addEventListener('click', toggleActivity);
 backButton.addEventListener('click', toggleBack);
 
-dailySteps.innerText = `Steps today: ${user.activity.getDailySteps(today)}\nUser average: ${userRepository.getDailyAverageSteps(today)}`;
-dailyMinutes.innerText = `Minutes Active today: ${user.activity.getDailyMinutesActive(today)}\nUser average: ${userRepository.getDailyAverageMinutes(today)}`;
-dailyDistance.innerText = `Miles Walked today: ${user.getDailyMilesWalked(today)}`;
-dailyFlights.innerText = `Flights climbed today: ${user.activity.getDailyStairsClimbed(today)}\nUser average: ${userRepository.getDailyAverageStairs(today)}`
-weeklySteps.innerText = `${user.activity.getWeeklyStepCount(today)}\n${week}`;
-weeklyStairs.innerText = `${user.activity.getWeeklyStairsClimbed(today)}\n${week}`;
-weeklyMinutes.innerText = `${user.activity.getWeeklyMinutesActive(today)}\n${week}`;
+stepsToday.innerText = user.activity.getDailySteps(today);
+avgStepsToday.innerText = userRepository.getDailyAverageSteps(today);
+minutesToday.innerText = user.activity.getDailyMinutesActive(today);
+avgMinutesToday.innerText = userRepository.getDailyAverageMinutes(today);
+milesToday.innerText = user.getDailyMilesWalked(today);
+flightsToday.innerText = user.activity.getDailyStairsClimbed(today);
+avgFlightsToday.innerText = userRepository.getDailyAverageStairs(today);
+const weeklyStepsChart = new Chart(weeklySteps, {
+  type: 'bar',
+  data: {
+    labels: week,
+    datasets: [{
+      label: 'Steps Taken',
+      data: user.activity.getWeeklyStepCount(today),
+      backgroundColor: [
+        '#A9B9FC',
+        '#C3A9FC',
+        '#ECA9FC',
+        '#FCA9E3',
+        '#FCA9B9',
+        '#FCC3A9',
+        '#FCEDA9'
+      ],
+    }]
+  },
+  options: {
+    legend: {
+      onClick: null,
+      labels: {
+        boxWidth: 0,
+        fontSize: 20,
+      }
+    },
+  }
+});
+const weeklyFlightsChart = new Chart(weeklyStairs, {
+  type: 'bar',
+  data: {
+    labels: week,
+    datasets: [{
+      label: 'Flights Climbed',
+      data: user.activity.getWeeklyStairsClimbed(today),
+      backgroundColor: [
+        '#A9B9FC',
+        '#C3A9FC',
+        '#ECA9FC',
+        '#FCA9E3',
+        '#FCA9B9',
+        '#FCC3A9',
+        '#FCEDA9'
+      ],
+    }]
+  },
+  options: {
+    legend: {
+      onClick: null,
+      labels: {
+        boxWidth: 0,
+        fontSize: 20,
+      }
+    }
+  }
+});
 
+const weeklyMinutesChart = new Chart(weeklyMinutes, {
+  type: 'bar',
+  data: {
+    labels: week,
+    datasets: [{
+      label: 'Minutes Active',
+      data: user.activity.getWeeklyMinutesActive(today),
+      backgroundColor: [
+        '#A9B9FC',
+        '#C3A9FC',
+        '#ECA9FC',
+        '#FCA9E3',
+        '#FCA9B9',
+        '#FCC3A9',
+        '#FCEDA9'
+      ],
+    }]
+  },
+  options: {
+    legend: {
+      onClick: null,
+      labels: {
+        boxWidth: 0,
+        fontSize: 20,
+      }
+    }
+  }
+});
 
 function toggleHydration() {
   homeDashboard.classList.toggle('hidden');

@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, intial-scale=1">
     <title>Activity Tracker</title>
     <link rel="stylesheet" type="text/css" href="./styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
@@ -16,62 +17,96 @@
       <img class="icon sleep-icon hidden" src="../assets/sleeping.png">
       <img class="icon activity-icon hidden" src="../assets/exercise.png">
     </div>
-    <section class="home-dashboard">
-      <article class="welcome-card">
-        <h2 class="welcome-message"></h2>
-        <img class="profile-pic" src="../assets/profile-image.png">
-        <p class="user-info"></p>
-        <p class="step-goal-compare"></p>
-      </article>
-      <button class="main-buttons hydration-button">
-        <img class="button-icon hydration-icon" src="../assets/water.png">
-        <p class="welcome-screen-data">ounces</p>
-      </button>
-      <button class="main-buttons sleep-button">
-        <img class="button-icon sleep-icon" src="../assets/sleeping.png">
-        <p class="welcome-screen-data">hours</p>
-      </button>
-      <button class="main-buttons activity-button">
-        <img class="button-icon activity-icon" src="../assets/exercise.png">
-        <p class="welcome-screen-data">steps</p>
-      </button>
-    </section>
-    <section class="hydration-dashboard hidden">
-      <div class="hydration daily-hydration">
-      </div>
-      <div class="hydration weekly-hydration">
-      </div>
-    </section>
-    <section class="sleep-dashboard hidden">
-      <div class="sleep hours-slept">TEST
-      </div>
-      <div class="sleep sleep-quality">TEST
-      </div>
-      <div class="sleep weekly-hours-slept">TEST
-      </div>
-      <div class="sleep weekly-sleep-quality">TEST
-      </div>
-    </section>
-    <section class="activity-dashboard hidden">
-      <div class="daily-activity">
-        <div class="activity daily-steps">PLACEHOLDER
+    <main>
+      <section class="home-dashboard">
+        <article class="welcome-card">
+          <h2 class="welcome-message"></h2>
+          <img class="profile-pic" src="../assets/profile-image.png">
+          <p class="user-info"></p>
+          <p class="step-goal-compare"></p>
+        </article>
+        <button class="main-buttons hydration-button">
+          <img class="button-icon hydration-icon" src="../assets/water.png">
+          <p class="welcome-screen-data">ounces</p>
+        </button>
+        <button class="main-buttons sleep-button">
+          <img class="button-icon sleep-icon" src="../assets/sleeping.png">
+          <p class="welcome-screen-data">hours</p>
+        </button>
+        <button class="main-buttons activity-button">
+          <img class="button-icon activity-icon" src="../assets/exercise.png">
+          <p class="welcome-screen-data">steps</p>
+        </button>
+      </section>
+      <section class="hydration-dashboard hidden">
+        <article class="hydration daily-hydration">
+          <p> Ounces of Water Today </p>
+          <h3 id="ounces-today"></h3>
+          <p> Your Average </p>
+          <h3 id="avg-ounces-today"></h3>
+        </article>
+        <div class="hydration weekly-hydration">
+          <canvas class="hydration hydration-chart">
+          </canvas>
         </div>
-        <div class="activity daily-minutes">PLACEHOLDER
+      </section>
+      <section class="sleep-dashboard hidden">
+        <div class="daily-sleep">
+          <article class="sleep hours-slept">
+            <p> Hours Slept Last Night </p>
+            <h3 id="hours-today"></h3>
+            <p> Your Average </p>
+            <h3 id="avg-hours-today"></h3>
+          </article>
+          <article class="sleep sleep-quality">
+            <p> Sleep Quality Last Night </p>
+            <h3 id="quality-today"></h3>
+            <p> Your Average </p>
+            <h3 id="avg-quality-today"></h3>
+          </article>
         </div>
-        <div class="activity daily-distance">PLACEHOLDER
+        <div class="weekly-sleep">
+          <canvas class="sleep weekly-hours-chart">
+          </canvas>
+          <canvas class="sleep weekly-quality-chart">
+          </canvas>
         </div>
-        <div class="activity daily-flights">PLACEHOLDER
+      </section>
+      <section class="activity-dashboard hidden">
+        <div class="daily-activity">
+          <article class="activity daily-steps">
+            <p> Total Steps Today </p>
+            <h3 id="steps-today"></h3>
+            <p> Community Average </p>
+            <h3 id="avg-steps-today"></h3>
+          </article>
+          <article class="activity daily-minutes">
+            <p> Minutes Active Today </p>
+            <h3 id="minutes-today"></h3>
+            <p> Community Average </p>
+            <h3 id="avg-minutes-today"></h3>
+          </article>
+          <article class="activity daily-distance">
+            <p> Miles Walked Today </p>
+            <h3 id="miles-today"></h3>
+          </article>
+          <article class="activity daily-flights">
+            <p> Flights Climbed Today </p>
+            <h3 id="flights-today"></h3>
+            <p> Community Average </p>
+            <h3 id="avg-flights-today"></h3>
+          </article>
         </div>
-      </div>
-      <div class="weekly-activity">
-        <div class="activity weekly-steps">PLACEHOLDER
+        <div class="weekly-activity">
+          <canvas class="activity weekly-steps-chart">
+          </canvas>
+          <canvas class="activity weekly-flights-chart">
+          </canvas>
+          <canvas class="activity weekly-minutes-chart">
+          </canvas>
         </div>
-        <div class="activity weekly-stairs">PLACEHOLDER
-        </div>
-        <div class="activity weekly-minutes">PLACEHOLDER
-        </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>
@@ -83,6 +118,7 @@
     <script type="text/javascript" src="../src/Hydration.js"></script>
     <script type="text/javascript" src="../src/Sleep.js"></script>
     <script type="text/javascript" src="../src/Activity.js"></script>
+    <script type="text/javascript" src="../node_modules/chart.js/dist/Chart.js"></script>
     <script type="text/javascript" src="./scripts.js"></script>
   </body>
 </html>
