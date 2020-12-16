@@ -1,8 +1,4 @@
 const userRepository = new UserRepository(userData);
-userRepository.createUsers();
-userRepository.fetchAllHydration(hydrationData);
-userRepository.fetchAllSleep(sleepData);
-userRepository.fetchAllActivity(activityData);
 
 const user = userRepository.users[getRandomIndex(userRepository.users)]
 
@@ -47,41 +43,67 @@ const milesToday = document.getElementById('miles-today');
 const flightsToday = document.getElementById('flights-today');
 const avgFlightsToday = document.getElementById('avg-flights-today');
 
-welcomeMessage.innerText = `Welcome ${user.returnFirstName()}!`;
-userInfo.innerText = `${user.address}\n${user.email}`;
-stepGoalCompare.innerText = `Your step goal is ${user.dailyStepGoal} steps per day.\nThe average goal is ${userRepository.averageStepGoal()} steps per day.`
+let hydrationChart;
+let weeklySleepChart;
+let weeklySleepQualityChart;
+let weeklyStepsChart;
+let weeklyFlightsChart;
+let weeklyMinutesChart;
 
-ouncesToday.innerText = user.hydration.getDailyOz(today);
-avgOunces.innerText = user.hydration.getAverageOz();
-
-const hydrationChart = new Chart(weeklyHydration, formatChart('Daily Ounces', user.hydration.getWeeklyOz(today)));
-
-const weeklySleepChart = new Chart(weeklyHoursSlept, formatChart('Hours of Sleep', user.sleep.getWeeklyHoursSlept(today)));
-
-const weeklySleepQualityChart = new Chart(weeklySleepQuality, formatChart('Sleep Quality', user.sleep.getWeeklySleepQuality(today)));
-
-
-hoursToday.innerText = user.sleep.getDailyHrsSlept(today);
-avgHours.innerText = user.sleep.getAverageHrsSlept();
-qualityToday.innerText = `${user.sleep.getDailySleepQuality(today)}/5`;
-avgQuality.innerText = `${user.sleep.getAverageSleepQuality()}/5`;
-
+window.addEventListener('load', function() {
+  updateUserRepo();
+  updateMainDash();
+  updateHydrationDash();
+  updateSleepDash();
+  updateActivityDash();
+})
 hydrationButton.addEventListener('click', toggleHydration);
 sleepButton.addEventListener('click', toggleSleep);
 activityButton.addEventListener('click', toggleActivity);
 backButton.addEventListener('click', toggleBack);
 
-stepsToday.innerText = user.activity.getDailySteps(today);
-avgStepsToday.innerText = userRepository.getDailyAverageSteps(today);
-minutesToday.innerText = user.activity.getDailyMinutesActive(today);
-avgMinutesToday.innerText = userRepository.getDailyAverageMinutes(today);
-milesToday.innerText = user.getDailyMilesWalked(today);
-flightsToday.innerText = user.activity.getDailyStairsClimbed(today);
-avgFlightsToday.innerText = userRepository.getDailyAverageStairs(today);
-const weeklyStepsChart = new Chart(weeklySteps, formatChart('Steps Taken', user.activity.getWeeklyStepCount(today)));
-const weeklyFlightsChart = new Chart(weeklyStairs, formatChart('Flights Climbed', user.activity.getWeeklyStairsClimbed(today)));
+function updateUserRepo() {
+  userRepository.createUsers();
+  userRepository.fetchAllHydration(hydrationData);
+  userRepository.fetchAllSleep(sleepData);
+  userRepository.fetchAllActivity(activityData);
+}
 
-const weeklyMinutesChart = new Chart(weeklyMinutes, formatChart('Minutes Active', user.activity.getWeeklyMinutesActive(today)));
+
+function updateMainDash() {
+  welcomeMessage.innerText = `Welcome ${user.returnFirstName()}!`;
+  userInfo.innerText = `${user.address}\n${user.email}`;
+  stepGoalCompare.innerText = `Your step goal is ${user.dailyStepGoal} steps per day.\nThe average goal is ${userRepository.averageStepGoal()} steps per day.`
+}
+
+function updateHydrationDash() {
+  ouncesToday.innerText = user.hydration.getDailyOz(today);
+  avgOunces.innerText = user.hydration.getAverageOz();
+  hydrationChart = new Chart(weeklyHydration, formatChart('Daily Ounces', user.hydration.getWeeklyOz(today)));
+}
+
+function updateSleepDash() {
+  hoursToday.innerText = user.sleep.getDailyHrsSlept(today);
+  avgHours.innerText = user.sleep.getAverageHrsSlept();
+  qualityToday.innerText = `${user.sleep.getDailySleepQuality(today)}/5`;
+  avgQuality.innerText = `${user.sleep.getAverageSleepQuality()}/5`;
+  weeklySleepChart = new Chart(weeklyHoursSlept, formatChart('Hours of Sleep', user.sleep.getWeeklyHoursSlept(today)));
+  weeklySleepQualityChart = new Chart(weeklySleepQuality, formatChart('Sleep Quality', user.sleep.getWeeklySleepQuality(today)));
+}
+
+function updateActivityDash() {
+  stepsToday.innerText = user.activity.getDailySteps(today);
+  avgStepsToday.innerText = userRepository.getDailyAverageSteps(today);
+  minutesToday.innerText = user.activity.getDailyMinutesActive(today);
+  avgMinutesToday.innerText = userRepository.getDailyAverageMinutes(today);
+  milesToday.innerText = user.getDailyMilesWalked(today);
+  flightsToday.innerText = user.activity.getDailyStairsClimbed(today);
+  avgFlightsToday.innerText = userRepository.getDailyAverageStairs(today);
+  weeklyStepsChart = new Chart(weeklySteps, formatChart('Steps Taken', user.activity.getWeeklyStepCount(today)));
+  weeklyFlightsChart = new Chart(weeklyStairs, formatChart('Flights Climbed', user.activity.getWeeklyStairsClimbed(today)));
+  weeklyMinutesChart = new Chart(weeklyMinutes, formatChart('Minutes Active', user.activity.getWeeklyMinutesActive(today)));
+}
+
 
 function toggleHydration() {
   homeDashboard.classList.toggle('hidden');
