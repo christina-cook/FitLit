@@ -143,9 +143,21 @@ main {
 
 /* SLEEP */
 
-.sleep {
+/* .sleep {
   height: 25%;
   width: 90%;
+} */
+
+.daily-sleep {
+  display: flex;
+  height: 50%;
+  justify-content: space-between;
+  width: 90%;
+}
+
+.hours-slept,
+.sleep-quality {
+  width: 50%;
 }
 
 .weekly-sleep {

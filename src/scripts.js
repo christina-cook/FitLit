@@ -28,8 +28,10 @@ const averageHydration = document.querySelector('.average-hydration');
 const weeklyHydration = document.querySelector('.hydration-chart').getContext('2d');
 
 const sleepDashboard = document.querySelector('.sleep-dashboard');
-const hoursSlept = document.querySelector('.hours-slept');
-const sleepQuality = document.querySelector('.sleep-quality');
+const hoursToday = document.getElementById('hours-today');
+const avgHoursToday = document.getElementById('avg-hours-today');
+const qualityToday = document.getElementById('quality-today');
+const avgQualityToday = document.getElementById('avg-quality-today');
 const weeklyHoursSlept = document.querySelector('.weekly-hours-chart').getContext('2d');
 const weeklySleepQuality = document.querySelector('.weekly-quality-chart').getContext('2d');
 
@@ -139,8 +141,10 @@ const weeklySleepQualityChart = new Chart(weeklySleepQuality, {
 });
 
 
-hoursSlept.innerText = `Last night you slept ${user.sleep.getDailyHrsSlept(today)} hours\nYour average is ${user.sleep.getAverageHrsSlept()} hours`;
-sleepQuality.innerText = `Your quality of sleep last night was ${user.sleep.getDailySleepQuality(today)}/5\nYour average is ${user.sleep.getAverageSleepQuality()}/5`;
+hoursToday.innerText = user.sleep.getDailyHrsSlept(today);
+avgHoursToday.innerText = user.sleep.getAverageHrsSlept();
+qualityToday.innerText = `${user.sleep.getDailySleepQuality(today)}/5`;
+avgQualityToday.innerText = `${user.sleep.getAverageSleepQuality()}/5`;
 
 hydrationButton.addEventListener('click', toggleHydration);
 sleepButton.addEventListener('click', toggleSleep);

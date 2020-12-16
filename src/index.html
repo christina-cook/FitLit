@@ -47,10 +47,20 @@
         </div>
       </section>
       <section class="sleep-dashboard hidden">
-        <article class="sleep hours-slept">
-        </article>
-        <article class="sleep sleep-quality">
-        </article>
+        <div class="daily-sleep">
+          <article class="sleep hours-slept">
+            <p> Hours Slept Last Night </p>
+            <h3 id="hours-today"></h3>
+            <p> Your Average </p>
+            <h3 id="avg-hours-today"></h3>
+          </article>
+          <article class="sleep sleep-quality">
+            <p> Sleep Quality Last Night </p>
+            <h3 id="quality-today"></h3>
+            <p> Your Average </p>
+            <h3 id="avg-quality-today"></h3>
+          </article>
+        </div>
         <div class="sleep weekly-sleep">
           <canvas class="sleep weekly-hours-chart">
           </canvas>
