@@ -39,23 +39,28 @@ main {
   display: flex;
   justify-content: space-around;
   height: 15vh;
-  margin-bottom: 40px;
+  width: 75%;
+  margin-bottom: 5%;
 }
 
 .back-button {
-  margin-right: 10%;
+  margin-right: 20%;
   border: none;
   border-radius: 10px;
-  height: 100%;
-  margin-top: 40px;
+  height: 50%;
+  margin-top: 10%;
 }
 
 .icon {
   background-color: white;
-  margin-left: 10%;
+  margin-left: 20%;
   border-radius: 10px;
+  height: 50%;
+  margin-top: 10%;
+}
+
+.back-arrow {
   height: 100%;
-  margin-top: 40px;
 }
 
 /* HOME */
