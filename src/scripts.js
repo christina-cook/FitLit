@@ -54,92 +54,11 @@ stepGoalCompare.innerText = `Your step goal is ${user.dailyStepGoal} steps per d
 ouncesToday.innerText = user.hydration.getDailyOz(today);
 avgOunces.innerText = user.hydration.getAverageOz();
 
-const hydrationChart = new Chart(weeklyHydration, {
-  type: 'bar',
-  data: {
-    labels: week,
-    datasets: [{
-      label: 'Daily Ounces',
-      data: user.hydration.getWeeklyOz(today),
-      backgroundColor: [
-        '#A9B9FC',
-        '#C3A9FC',
-        '#ECA9FC',
-        '#FCA9E3',
-        '#FCA9B9',
-        '#FCC3A9',
-        '#FCEDA9'
-      ],
-    }]
-  },
-  options: {
-    legend: {
-      onClick: null,
-      labels: {
-        boxWidth: 0,
-        fontSize: 20,
-      }
-    },
-  }
-});
+const hydrationChart = new Chart(weeklyHydration, formatChart('Daily Ounces', user.hydration.getWeeklyOz(today)));
 
-const weeklySleepChart = new Chart(weeklyHoursSlept, {
-  type: 'bar',
-  data: {
-    labels: week,
-    datasets: [{
-      label: 'Hours of Sleep',
-      data: user.sleep.getWeeklyHoursSlept(today),
-      backgroundColor: [
-        '#A9B9FC',
-        '#C3A9FC',
-        '#ECA9FC',
-        '#FCA9E3',
-        '#FCA9B9',
-        '#FCC3A9',
-        '#FCEDA9'
-      ],
-    }]
-  },
-  options: {
-    legend: {
-      onClick: null,
-      labels: {
-        boxWidth: 0,
-        fontSize: 20,
-      }
-    },
-  }
-});
+const weeklySleepChart = new Chart(weeklyHoursSlept, formatChart('Hours of Sleep', user.sleep.getWeeklyHoursSlept(today)));
 
-const weeklySleepQualityChart = new Chart(weeklySleepQuality, {
-  type: 'bar',
-  data: {
-    labels: week,
-    datasets: [{
-      label: 'Sleep Quality',
-      data: user.sleep.getWeeklySleepQuality(today),
-      backgroundColor: [
-        '#A9B9FC',
-        '#C3A9FC',
-        '#ECA9FC',
-        '#FCA9E3',
-        '#FCA9B9',
-        '#FCC3A9',
-        '#FCEDA9'
-      ],
-    }]
-  },
-  options: {
-    legend: {
-      onClick: null,
-      labels: {
-        boxWidth: 0,
-        fontSize: 20,
-      }
-    }
-  }
-});
+const weeklySleepQualityChart = new Chart(weeklySleepQuality, formatChart('Sleep Quality', user.sleep.getWeeklySleepQuality(today)));
 
 
 hoursToday.innerText = user.sleep.getDailyHrsSlept(today);
@@ -159,91 +78,10 @@ avgMinutesToday.innerText = userRepository.getDailyAverageMinutes(today);
 milesToday.innerText = user.getDailyMilesWalked(today);
 flightsToday.innerText = user.activity.getDailyStairsClimbed(today);
 avgFlightsToday.innerText = userRepository.getDailyAverageStairs(today);
-const weeklyStepsChart = new Chart(weeklySteps, {
-  type: 'bar',
-  data: {
-    labels: week,
-    datasets: [{
-      label: 'Steps Taken',
-      data: user.activity.getWeeklyStepCount(today),
-      backgroundColor: [
-        '#A9B9FC',
-        '#C3A9FC',
-        '#ECA9FC',
-        '#FCA9E3',
-        '#FCA9B9',
-        '#FCC3A9',
-        '#FCEDA9'
-      ],
-    }]
-  },
-  options: {
-    legend: {
-      onClick: null,
-      labels: {
-        boxWidth: 0,
-        fontSize: 20,
-      }
-    },
-  }
-});
-const weeklyFlightsChart = new Chart(weeklyStairs, {
-  type: 'bar',
-  data: {
-    labels: week,
-    datasets: [{
-      label: 'Flights Climbed',
-      data: user.activity.getWeeklyStairsClimbed(today),
-      backgroundColor: [
-        '#A9B9FC',
-        '#C3A9FC',
-        '#ECA9FC',
-        '#FCA9E3',
-        '#FCA9B9',
-        '#FCC3A9',
-        '#FCEDA9'
-      ],
-    }]
-  },
-  options: {
-    legend: {
-      onClick: null,
-      labels: {
-        boxWidth: 0,
-        fontSize: 20,
-      }
-    }
-  }
-});
+const weeklyStepsChart = new Chart(weeklySteps, formatChart('Steps Taken', user.activity.getWeeklyStepCount(today)));
+const weeklyFlightsChart = new Chart(weeklyStairs, formatChart('Flights Climbed', user.activity.getWeeklyStairsClimbed(today)));
 
-const weeklyMinutesChart = new Chart(weeklyMinutes, {
-  type: 'bar',
-  data: {
-    labels: week,
-    datasets: [{
-      label: 'Minutes Active',
-      data: user.activity.getWeeklyMinutesActive(today),
-      backgroundColor: [
-        '#A9B9FC',
-        '#C3A9FC',
-        '#ECA9FC',
-        '#FCA9E3',
-        '#FCA9B9',
-        '#FCC3A9',
-        '#FCEDA9'
-      ],
-    }]
-  },
-  options: {
-    legend: {
-      onClick: null,
-      labels: {
-        boxWidth: 0,
-        fontSize: 20,
-      }
-    }
-  }
-});
+const weeklyMinutesChart = new Chart(weeklyMinutes, formatChart('Minutes Active', user.activity.getWeeklyMinutesActive(today)));
 
 function toggleHydration() {
   homeDashboard.classList.toggle('hidden');
