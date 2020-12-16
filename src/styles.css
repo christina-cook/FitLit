@@ -99,6 +99,8 @@ main {
 
 .main-buttons {
   font-family: "Lato", sans-serif;
+  font-size: 5vmin;
+  padding-bottom: 2%;
   background-color: white;
   border: none;
   border-radius: 10px;
@@ -107,6 +109,7 @@ main {
   align-items: center;
   margin: 10px;
   justify-content: center;
+  flex-direction: column;
 }
 
 .button-icon {
