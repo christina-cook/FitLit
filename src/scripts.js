@@ -23,15 +23,15 @@ const sleepButton = document.querySelector('.sleep-button');
 const activityButton = document.querySelector('.activity-button');
 
 const hydrationDashboard = document.querySelector('.hydration-dashboard');
-const dailyHydration = document.querySelector('.daily-hydration');
-const averageHydration = document.querySelector('.average-hydration');
+const ouncesToday = document.getElementById('ounces-today');
+const avgOunces = document.getElementById('avg-ounces-today');
 const weeklyHydration = document.querySelector('.hydration-chart').getContext('2d');
 
 const sleepDashboard = document.querySelector('.sleep-dashboard');
 const hoursToday = document.getElementById('hours-today');
-const avgHoursToday = document.getElementById('avg-hours-today');
+const avgHours = document.getElementById('avg-hours-today');
 const qualityToday = document.getElementById('quality-today');
-const avgQualityToday = document.getElementById('avg-quality-today');
+const avgQuality = document.getElementById('avg-quality-today');
 const weeklyHoursSlept = document.querySelector('.weekly-hours-chart').getContext('2d');
 const weeklySleepQuality = document.querySelector('.weekly-quality-chart').getContext('2d');
 
@@ -51,7 +51,8 @@ welcomeMessage.innerText = `Welcome ${user.returnFirstName()}!`;
 userInfo.innerText = `${user.address}\n${user.email}`;
 stepGoalCompare.innerText = `Your step goal is ${user.dailyStepGoal} steps per day.\nThe average goal is ${userRepository.averageStepGoal()} steps per day.`
 
-dailyHydration.innerText = `You've drank ${user.hydration.getDailyOz(today)}oz of water today\nOn average you drink ${user.hydration.getAverageOz()}oz per day`;
+ouncesToday.innerText = user.hydration.getDailyOz(today);
+avgOunces.innerText = user.hydration.getAverageOz();
 
 const hydrationChart = new Chart(weeklyHydration, {
   type: 'bar',
@@ -142,9 +143,9 @@ const weeklySleepQualityChart = new Chart(weeklySleepQuality, {
 
 
 hoursToday.innerText = user.sleep.getDailyHrsSlept(today);
-avgHoursToday.innerText = user.sleep.getAverageHrsSlept();
+avgHours.innerText = user.sleep.getAverageHrsSlept();
 qualityToday.innerText = `${user.sleep.getDailySleepQuality(today)}/5`;
-avgQualityToday.innerText = `${user.sleep.getAverageSleepQuality()}/5`;
+avgQuality.innerText = `${user.sleep.getAverageSleepQuality()}/5`;
 
 hydrationButton.addEventListener('click', toggleHydration);
 sleepButton.addEventListener('click', toggleSleep);
