@@ -1,5 +1,5 @@
 const userRepository = new UserRepository(userData);
-
+updateUserRepo();
 const user = userRepository.users[getRandomIndex(userRepository.users)];
 
 const today = "2019/09/22";
@@ -51,7 +51,6 @@ let weeklyFlightsChart;
 let weeklyMinutesChart;
 
 window.addEventListener('load', function() {
-  updateUserRepo();
   updateMainDash();
   updateHydrationDash();
   updateSleepDash();
