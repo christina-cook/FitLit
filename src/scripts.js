@@ -37,10 +37,13 @@ const activityDashboard = document.querySelector('.activity-dashboard');
 const weeklySteps = document.querySelector('.weekly-steps-chart').getContext('2d');
 const weeklyStairs = document.querySelector('.weekly-flights-chart').getContext('2d');
 const weeklyMinutes = document.querySelector('.weekly-minutes-chart').getContext('2d');
-const dailySteps = document.querySelector('.daily-steps');
-const dailyMinutes = document.querySelector('.daily-minutes');
-const dailyDistance = document.querySelector('.daily-distance');
-const dailyFlights = document.querySelector('.daily-flights');
+const stepsToday = document.getElementById('steps-today');
+const avgStepsToday = document.getElementById('avg-steps-today');
+const minutesToday = document.getElementById('minutes-today');
+const avgMinutesToday = document.getElementById('avg-minutes-today');
+const milesToday = document.getElementById('miles-today');
+const flightsToday = document.getElementById('flights-today');
+const avgFlightsToday = document.getElementById('avg-flights-today');
 
 welcomeMessage.innerText = `Welcome ${user.returnFirstName()}!`;
 userInfo.innerText = `${user.address}\n${user.email}`;
@@ -144,10 +147,13 @@ sleepButton.addEventListener('click', toggleSleep);
 activityButton.addEventListener('click', toggleActivity);
 backButton.addEventListener('click', toggleBack);
 
-dailySteps.innerText = `Steps today: ${user.activity.getDailySteps(today)}\nUser average: ${userRepository.getDailyAverageSteps(today)}`;
-dailyMinutes.innerText = `Minutes Active today: ${user.activity.getDailyMinutesActive(today)}\nUser average: ${userRepository.getDailyAverageMinutes(today)}`;
-dailyDistance.innerText = `Miles Walked today: ${user.getDailyMilesWalked(today)}`;
-dailyFlights.innerText = `Flights climbed today: ${user.activity.getDailyStairsClimbed(today)}\nUser average: ${userRepository.getDailyAverageStairs(today)}`
+stepsToday.innerText = user.activity.getDailySteps(today);
+avgStepsToday.innerText = userRepository.getDailyAverageSteps(today);
+minutesToday.innerText = user.activity.getDailyMinutesActive(today);
+avgMinutesToday.innerText = userRepository.getDailyAverageMinutes(today);
+milesToday.innerText = user.getDailyMilesWalked(today);
+flightsToday.innerText = user.activity.getDailyStairsClimbed(today);
+avgFlightsToday.innerText = userRepository.getDailyAverageStairs(today);
 const weeklyStepsChart = new Chart(weeklySteps, {
   type: 'bar',
   data: {

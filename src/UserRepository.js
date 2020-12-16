@@ -73,7 +73,7 @@ class UserRepository {
     const averageSteps = steps.reduce((sum, step) => {
       return sum + step;
     }, 0) / steps.length;
-    return averageSteps;
+    return Math.round(averageSteps);
   }
 
   getDailyAverageStairs(date) {

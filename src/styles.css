@@ -30,6 +30,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 /* TOP BAR */
@@ -156,14 +157,13 @@ main {
 
 /* ACTIVITY */
 
-.daily-activity,
-.weekly-activity {
-  height: 50%;
-}
 
 .daily-activity {
+  display: flex;
+  flex-direction: column;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  width: 90%;
 }
 
 .weekly-activity {
@@ -172,10 +172,3 @@ main {
   align-items: center;
   width: 90%;
 }
-
-/* .weekly-steps,
-.weekly-stairs,
-.weekly-minutes {
-  width: 90%;
-  height: 30%;
-} */
