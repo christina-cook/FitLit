@@ -20,7 +20,7 @@ class Activity {
     return day.minutesActive;
   }
 
-  getDailyStairsClimbed(date) {
+  getDailyFlightsClimbed(date) {
     const day = getTargetDay(this.activityData, date);
     return day.flightsOfStairs;
   }
@@ -40,12 +40,12 @@ class Activity {
     return week.map(day => day.numSteps);
   }
 
-  getWeeklyStairsClimbed(date) {
+  getWeeklyFlightsClimbed(date) {
     const week = getTargetWeek(this.activityData, date);
     return week.map(day => day.flightsOfStairs);
   }
 
-  getRecordNumberOfStairsClimbed() {
+  getRecordNumberOfFlightsClimbed() {
     const record = this.activityData.reduce((record, day) => {
       if (day.flightsOfStairs > record) {
         return day.flightsOfStairs;
