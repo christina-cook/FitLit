@@ -27,116 +27,27 @@ p {
 }
 
 main {
-  height: 85vh;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 85vh;
   width: 100%;
 }
-
-.sleepdash,
-.activitydash,
-.hydrationdash {
-  line-height: 50%;
-}
-
-/* TOP BAR */
-
-.topbar {
-  display: flex;
-  justify-content: space-around;
-  height: 15vh;
-  width: 75%;
-  margin-bottom: 5%;
-}
-
-.topbar__backbtn  {
-  margin-right: 20%;
-  border: none;
-  border-radius: 10px;
-  height: 50%;
-  margin-top: 10%;
-}
-
-.topbar__backbtn--backarrow {
-  height: 100%;
-}
-
-.topbar--icon {
-  background-color: white;
-  margin-left: 20%;
-  border-radius: 10px;
-  height: 50%;
-  margin-top: 10%;
-}
-
-/* HOME */
 
 .homedash,
 .hydrationdash,
 .sleepdash,
 .activitydash {
-  display: flex;
-  flex-direction: column;
   align-items: center;
-}
-
-.homedash__welcome {
-  color: #535454;
-  background-color: white;
-  border: solid, 10px, white;
-  border-radius: 10px;
   display: flex;
   flex-direction: column;
-  text-align: center;
-  width: 90%;
-  margin-bottom: 10px;
 }
-
-.homedash__welcome--profilepic {
-  height: 100px;
-  width: 100px;
-  align-self: center;
-}
-
-.mainbtns {
-  display: flex;
-  flex-direction: column;
-  align-items: baseline;
-  width: 100%;
-}
-
-#step-goal-compare {
-  font-size: 5vmin;
-}
-
-.mainbtns--btn {
-  color: #535454;
-  font-family: "Lato", sans-serif;
-  font-size: 5vmin;
-  padding-bottom: 2%;
-  background-color: white;
-  border: none;
-  border-radius: 10px;
-  display: flex;
-  width: 90%;
-  align-items: center;
-  margin: 10px;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.mainbtns--btnicon {
-  height: 100px;
-  padding: 10px;
-}
-
-/* DASHBOARDS */
 
 .hydrationdash,
 .sleepdash,
 .activitydash {
   font-size: 6vmin;
+  line-height: 50%;
   text-align: center;
   width: 85%;
 }
@@ -149,6 +60,89 @@ main {
   margin: 10px;
 }
 
+
+
+/* TOP BAR */
+
+.topbar {
+  display: flex;
+  height: 15vh;
+  justify-content: space-around;
+  margin-bottom: 5%;
+  width: 75%;
+}
+
+.topbar__backbtn  {
+  border: none;
+  border-radius: 10px;
+  height: 50%;
+  margin-right: 20%;
+  margin-top: 10%;
+}
+
+.topbar__backbtn--backarrow {
+  height: 100%;
+}
+
+.topbar--icon {
+  background-color: white;
+  border-radius: 10px;
+  height: 50%;
+  margin-left: 20%;
+  margin-top: 10%;
+}
+
+/* HOME */
+
+.homedash__welcome {
+  background-color: white;
+  border: solid, 10px, white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 90%;
+}
+
+.homedash__welcome--profilepic {
+  align-self: center;
+  height: 100px;
+  width: 100px;
+}
+
+.mainbtns {
+  align-items: baseline;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+#step-goal-compare {
+  font-size: 5vmin;
+}
+
+.mainbtns--btn {
+  align-items: center;
+  background-color: white;
+  border: none;
+  border-radius: 10px;
+  color: #535454;
+  display: flex;
+  flex-direction: column;
+  font-family: "Lato", sans-serif;
+  font-size: 5vmin;
+  justify-content: center;
+  margin: 10px;
+  padding-bottom: 2%;
+  width: 90%;
+}
+
+.mainbtns--btnicon {
+  height: 100px;
+  padding: 10px;
+}
+
 /* HYDRATION */
 
 .hydrationdash__daily {
@@ -157,9 +151,9 @@ main {
 }
 
 .hydrationdash__weekly {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 90%;
 }
 
@@ -172,14 +166,14 @@ main {
 }
 
 .sleepdash__daily--dailyinfo {
-  width: 50%;
   margin: 10px;
+  width: 50%;
 }
 
 .sleepdash__weekly {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 90%;
 
 }
@@ -188,31 +182,29 @@ main {
 
 
 .activitydash__daily {
-  display: flex;
-  flex-direction: column;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   width: 90%;
 }
 
 .activitydash__weekly {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 90%;
 }
 
 /* DESKTOP VIEW */
 
 @media screen and (min-width: 615px) {
-/* HOME */
+/* DASHBOARDS */
 
   .homedash,
   .sleepdash,
   .activitydash {
+    align-items: center;
     display: flex;
     flex-direction: row;
-    align-items: center;
   }
 
 
@@ -225,9 +217,9 @@ main {
   }
 
   .sleepdash__weekly {
+    align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
     width: 50%;
 
   }
@@ -236,18 +228,11 @@ main {
 
 
   .activitydash__daily {
-    display: flex;
-    flex-direction: column;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
     height: 100%;
     width: 50%;
   }
 
   .activitydash__weekly {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     height: 100%;
     width: 50%;
   }
