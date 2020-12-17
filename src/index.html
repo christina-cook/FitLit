@@ -8,101 +8,103 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div class="top-bar">
-      <button class="back-button hidden">
-        <img aria-label="back to main" class="back-arrow" src="../assets/back-arrow.png" alt:"Back arrow">
+    <div class="topbar">
+      <button class="topbar__backbtn hidden">
+        <img aria-label="back to main" class="topbar__backbtn--backarrow" src="../assets/back-arrow.png" alt:"Back arrow">
       </button>
       <h1>FitLit</h1>
-      <img class="icon hydration-icon hidden" src="../assets/water.png" alt="water drops">
-      <img class="icon sleep-icon hidden" src="../assets/sleeping.png" alt="person sleeping">
-      <img class="icon activity-icon hidden" src="../assets/exercise.png" alt="person running">
+      <img class="topbar--icon topbar__hydrationicon hidden" src="../assets/water.png" alt="water drops">
+      <img class="topbar--icon topbar__sleepicon hidden" src="../assets/sleeping.png" alt="person sleeping">
+      <img class="topbar--icon topbar__activityicon hidden" src="../assets/exercise.png" alt="person running">
     </div>
     <main>
-      <section class="home-dashboard">
-        <article class="welcome-card">
-          <h2 class="welcome-message"></h2>
-          <img class="profile-pic" src="../assets/profile-image.png" alt="placeholder profile picutre">
-          <p class="user-info"></p>
-          <p class="step-goal-compare"></p>
+      <section class="homedash">
+        <article class="homedash__welcome">
+          <h2 id="welcome-message"></h2>
+          <img class="homedash__welcome--profilepic" src="../assets/profile-image.png" alt="placeholder profile picutre">
+          <p id="user-info"></p>
+          <p id="step-goal-compare"></p>
         </article>
-        <button class="main-buttons hydration-button">
-          <img class="button-icon hydration-icon" src="../assets/water.png" alt="water drops">
+        <div class="mainbtns">
+        <button class="mainbtns--btn" id="hydration-button">
+          <img class="mainbtns--btnicon" src="../assets/water.png" alt="water drops">
           Hydration
         </button>
-        <button class="main-buttons sleep-button">
-          <img class="button-icon sleep-icon" src="../assets/sleeping.png" alt="a person sleeping">
+        <button class="mainbtns--btn" id="sleep-button">
+          <img class="mainbtns--btnicon" src="../assets/sleeping.png" alt="person sleeping">
           Sleep
         </button>
-        <button class="main-buttons activity-button">
-          <img class="button-icon activity-icon" src="../assets/exercise.png" alt="a person running">
+        <button class="mainbtns--btn" id="activity-button">
+          <img class="mainbtns--btnicon" src="../assets/exercise.png" alt="person running">
           Activity
         </button>
+      </div>
       </section>
-      <section class="hydration-dashboard hidden">
-        <article class="hydration daily-hydration">
+      <section class="hydrationdash hidden">
+        <article class="hydrationdash--hydration hydrationdash__daily">
           <p> Ounces of Water Today </p>
           <h3 id="ounces-today"></h3>
           <p> Your Average </p>
           <h3 id="avg-ounces-today"></h3>
         </article>
-        <div class="hydration weekly-hydration">
-          <canvas class="hydration hydration-chart">
+        <div class="hydrationdash--hydration hydrationdash__weekly">
+          <canvas id="hydration-chart">
           </canvas>
         </div>
       </section>
-      <section class="sleep-dashboard hidden">
-        <div class="daily-sleep">
-          <article class="sleep hours-slept">
+      <section class="sleepdash hidden">
+        <div class="sleepdash__daily">
+          <article class="sleepdash--sleep sleepdash__daily--dailyinfo">
             <p> Hours Slept Last Night </p>
             <h3 id="hours-today"></h3>
             <p> Your Average </p>
             <h3 id="avg-hours-today"></h3>
           </article>
-          <article class="sleep sleep-quality">
+          <article class="sleepdash--sleep sleep-quality">
             <p> Sleep Quality Last Night </p>
             <h3 id="quality-today"></h3>
             <p> Your Average </p>
             <h3 id="avg-quality-today"></h3>
           </article>
         </div>
-        <div class="weekly-sleep">
-          <canvas class="sleep weekly-hours-chart">
+        <div class="sleepdash__weekly">
+          <canvas class="sleepdash--sleep" id="weekly-hours-chart">
           </canvas>
-          <canvas class="sleep weekly-quality-chart">
+          <canvas class="sleepdash--sleep" id="weekly-quality-chart">
           </canvas>
         </div>
       </section>
-      <section class="activity-dashboard hidden">
-        <div class="daily-activity">
-          <article class="activity daily-steps">
+      <section class="activitydash hidden">
+        <div class="activitydash__daily">
+          <article class="activitydash--activity">
             <p> Total Steps Today </p>
             <h3 id="steps-today"></h3>
             <p> Community Average </p>
             <h3 id="avg-steps-today"></h3>
           </article>
-          <article class="activity daily-minutes">
+          <article class="activitydash--activity">
             <p> Minutes Active Today </p>
             <h3 id="minutes-today"></h3>
             <p> Community Average </p>
             <h3 id="avg-minutes-today"></h3>
           </article>
-          <article class="activity daily-distance">
+          <article class="activitydash--activity">
             <p> Miles Walked Today </p>
             <h3 id="miles-today"></h3>
           </article>
-          <article class="activity daily-flights">
+          <article class="activitydash--activity daily-flights">
             <p> Flights Climbed Today </p>
             <h3 id="flights-today"></h3>
             <p> Community Average </p>
             <h3 id="avg-flights-today"></h3>
           </article>
         </div>
-        <div class="weekly-activity">
-          <canvas class="activity weekly-steps-chart">
+        <div class="activitydash__weekly">
+          <canvas class="activitydash--activity" id="weekly-steps-chart">
           </canvas>
-          <canvas class="activity weekly-flights-chart">
+          <canvas class="activitydash--activity" id="weekly-flights-chart">
           </canvas>
-          <canvas class="activity weekly-minutes-chart">
+          <canvas class="activitydash--activity" id="weekly-minutes-chart">
           </canvas>
         </div>
       </section>
