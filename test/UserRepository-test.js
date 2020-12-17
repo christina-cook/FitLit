@@ -341,11 +341,11 @@ describe('UserRepository', () => {
     expect(userRepository.getDailyAverageSteps("2019/06/15")).to.equal(5091);
   });
 
-  it('Should get the daily average stairs climbed', () => {
+  it('Should get the daily average flights climbed', () => {
     userRepository.createUsers();
     userRepository.fetchAllActivity(activityData);
 
-    expect(userRepository.getDailyAverageStairs("2019/06/15")).to.equal(19);
+    expect(userRepository.getDailyAverageFlights("2019/06/15")).to.equal(19);
   });
 
   it('Should get the daily average minutes active', () => {
