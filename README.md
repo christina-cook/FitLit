@@ -1,6 +1,6 @@
 # FitLit
 
-FitLit is a proof-of-concept for a fitness tracking web application. The app breaks down a users hydration, sleep patterns, and activity levels, comparing them to their goals, and to community averages. Although designed with a mobile view in mind, FitLit works on browsers of any size. It is deployed to GitHub Pages here.
+FitLit is a proof-of-concept for a fitness tracking web application. The app breaks down a users hydration, sleep patterns, and activity levels, comparing them to their goals, and to community averages. Although designed with a mobile view in mind, FitLit works on browsers of any size. It runs in the web browser and is deployed to GitHub Pages here.
 
 ## Technologies and Skills
 
