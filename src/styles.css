@@ -202,8 +202,6 @@ main {
   .homedash,
   .sleepdash,
   .activitydash {
-    align-items: center;
-    display: flex;
     flex-direction: row;
   }
 
@@ -211,15 +209,11 @@ main {
   /* SLEEP */
 
   .sleepdash__daily {
-    display: flex;
     height: 100%;
     width: 50%;
   }
 
   .sleepdash__weekly {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
     width: 50%;
 
   }
