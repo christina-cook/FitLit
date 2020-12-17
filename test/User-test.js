@@ -72,6 +72,27 @@ describe('User', () => {
         "numSteps": 7402,
         "minutesActive": 116,
         "flightsOfStairs": 33
+      },
+      {
+        "userID": 4,
+        "date": "2019/06/15",
+        "numSteps": 1120,
+        "minutesActive": 35,
+        "flightsOfStairs": 5
+      },
+      {
+        "userID": 4,
+        "date": "2019/06/16",
+        "numSteps": 3522,
+        "minutesActive": 160,
+        "flightsOfStairs": 5
+      },
+      {
+        "userID": 4,
+        "date": "2019/06/17",
+        "numSteps": 6273,
+        "minutesActive": 45,
+        "flightsOfStairs": 10
       }];
   });
 
@@ -229,13 +250,40 @@ describe('User', () => {
       }]);
   });
 
-  // it('Should have a different Activity property', () => {
-  //
-  // });
+  it('Should have a different Activity property', () => {
+    user4.fetchActivity(activityData);
+    expect(user4.activity.activityData).to.eql([
+      {
+        "userID": 4,
+        "date": "2019/06/15",
+        "numSteps": 1120,
+        "minutesActive": 35,
+        "flightsOfStairs": 5
+      },
+      {
+        "userID": 4,
+        "date": "2019/06/16",
+        "numSteps": 3522,
+        "minutesActive": 160,
+        "flightsOfStairs": 5
+      },
+      {
+        "userID": 4,
+        "date": "2019/06/17",
+        "numSteps": 6273,
+        "minutesActive": 45,
+        "flightsOfStairs": 10
+      }]);
+  });
 
   it('Should get daily miles walked', () => {
     user3.fetchActivity(activityData);
-    expect(user3.getDailyMilesWalked("2019/06/17")).to.equal(2.8)
+    expect(user3.getDailyMilesWalked("2019/06/17")).to.equal(2.8);
+  });
+
+  it('Should get different daily miles walked', () => {
+    user3.fetchActivity(activityData);
+    expect(user3.getDailyMilesWalked("2019/06/16")).to.equal(1.6);
   });
 
   it('Should determine if daily goal is reached', () => {
