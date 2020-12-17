@@ -1,11 +1,11 @@
-const formatChart = (title, data) => {
+const formatChart = (title, data, week) => {
   return {
     type: 'bar',
     data: {
       labels: week,
       datasets: [{
         label: title,
-        data: data,
+        data,
         backgroundColor: [
           '#A9B9FC',
           '#C3A9FC',

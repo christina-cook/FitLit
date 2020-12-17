@@ -1,7 +1,3 @@
-const userRepository = new UserRepository(userData);
-updateUserRepo();
-const user = userRepository.users[getRandomIndex(userRepository.users)];
-
 const today = "2019/09/22";
 const week = ["9/16", "9/17", "9/18", "9/19", "9/20", "9/21", "9/22"];
 
@@ -50,22 +46,29 @@ let weeklyStepsChart;
 let weeklyFlightsChart;
 let weeklyMinutesChart;
 
+let userRepository;
+let user;
+
 window.addEventListener('load', function() {
+  updateUserRepo();
   updateMainDash();
   updateHydrationDash();
   updateSleepDash();
   updateActivityDash();
 })
+
 hydrationButton.addEventListener('click', toggleHydration);
 sleepButton.addEventListener('click', toggleSleep);
 activityButton.addEventListener('click', toggleActivity);
 backButton.addEventListener('click', toggleBack);
 
 function updateUserRepo() {
+  userRepository = new UserRepository(userData);
   userRepository.createUsers();
   userRepository.fetchAllHydration(hydrationData);
   userRepository.fetchAllSleep(sleepData);
   userRepository.fetchAllActivity(activityData);
+  user = userRepository.users[getRandomIndex(userRepository.users)];
 }
 
 function updateMainDash() {
@@ -77,7 +80,7 @@ function updateMainDash() {
 function updateHydrationDash() {
   ouncesToday.innerText = user.hydration.getDailyOz(today);
   avgOunces.innerText = user.hydration.getAverageOz();
-  hydrationChart = new Chart(weeklyHydration, formatChart('Daily Ounces', user.hydration.getWeeklyOz(today)));
+  hydrationChart = new Chart(weeklyHydration, formatChart('Daily Ounces', user.hydration.getWeeklyOz(today), week));
 }
 
 function updateSleepDash() {
@@ -85,8 +88,8 @@ function updateSleepDash() {
   avgHours.innerText = user.sleep.getAverageHrsSlept();
   qualityToday.innerText = `${user.sleep.getDailySleepQuality(today)}/5`;
   avgQuality.innerText = `${user.sleep.getAverageSleepQuality()}/5`;
-  weeklySleepChart = new Chart(weeklyHoursSlept, formatChart('Hours of Sleep', user.sleep.getWeeklyHoursSlept(today)));
-  weeklySleepQualityChart = new Chart(weeklySleepQuality, formatChart('Sleep Quality', user.sleep.getWeeklySleepQuality(today)));
+  weeklySleepChart = new Chart(weeklyHoursSlept, formatChart('Hours of Sleep', user.sleep.getWeeklyHoursSlept(today), week));
+  weeklySleepQualityChart = new Chart(weeklySleepQuality, formatChart('Sleep Quality', user.sleep.getWeeklySleepQuality(today), week));
 }
 
 function updateActivityDash() {
@@ -97,9 +100,9 @@ function updateActivityDash() {
   milesToday.innerText = user.getDailyMilesWalked(today);
   flightsToday.innerText = user.activity.getDailyFlightsClimbed(today);
   avgFlightsToday.innerText = userRepository.getDailyAverageFlights(today);
-  weeklyStepsChart = new Chart(weeklySteps, formatChart('Steps Taken', user.activity.getWeeklyStepCount(today)));
-  weeklyFlightsChart = new Chart(weeklyStairs, formatChart('Flights Climbed', user.activity.getWeeklyFlightsClimbed(today)));
-  weeklyMinutesChart = new Chart(weeklyMinutes, formatChart('Minutes Active', user.activity.getWeeklyMinutesActive(today)));
+  weeklyStepsChart = new Chart(weeklySteps, formatChart('Steps Taken', user.activity.getWeeklyStepCount(today), week));
+  weeklyFlightsChart = new Chart(weeklyStairs, formatChart('Flights Climbed', user.activity.getWeeklyFlightsClimbed(today), week));
+  weeklyMinutesChart = new Chart(weeklyMinutes, formatChart('Minutes Active', user.activity.getWeeklyMinutesActive(today), week));
 }
 
 
