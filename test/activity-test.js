@@ -55,6 +55,13 @@ describe('Activity', () => {
         "numSteps": 2634,
         "minutesActive": 107,
         "flightsOfStairs": 5
+      },
+      {
+        "userID": 1,
+        "date": "2019/06/22",
+        "numSteps": 2452,
+        "minutesActive": 98,
+        "flightsOfStairs": 4
       }
     ];
 
@@ -69,31 +76,59 @@ describe('Activity', () => {
     expect(activity.getDailySteps("2019/06/20")).to.equal(14810);
   });
 
+  it('Should get different daily step count', () => {
+    expect(activity.getDailySteps("2019/06/21")).to.equal(2634);
+  });
+
   it('Should get daily minutes active', () => {
     expect(activity.getDailyMinutesActive("2019/06/20")).to.equal(287);
   });
 
-  it('Should get daily stairs climbed', () => {
-    expect(activity.getDailyStairsClimbed("2019/06/20")).to.equal(18);
+  it('Should get different daily minutes active', () => {
+    expect(activity.getDailyMinutesActive("2019/06/21")).to.equal(107);
+  });
+
+  it('Should get daily flights climbed', () => {
+    expect(activity.getDailyFlightsClimbed("2019/06/20")).to.equal(18);
+  });
+
+  it('Should get different daily flights climbed', () => {
+    expect(activity.getDailyFlightsClimbed("2019/06/21")).to.equal(5);
   });
 
   it('Should get weekly minutes active', () => {
     expect(activity.getWeeklyMinutesActive("2019/06/21")).to.eql([140, 138, 116, 114, 213, 287, 107]);
   });
 
+  it('Should get different weekly minutes active', () => {
+    expect(activity.getWeeklyMinutesActive("2019/06/22")).to.eql([138, 116, 114, 213, 287, 107, 98]);
+  });
+
   it('Should get weekly average minutes active', () => {
     expect(activity.getWeeklyAvgMinutesActive("2019/06/21")).to.equal(159);
+  });
+
+  it('Should get different weekly average minutes active', () => {
+    expect(activity.getWeeklyAvgMinutesActive("2019/06/22")).to.equal(153);
   });
 
   it('Should get weekly step counts', () => {
     expect(activity.getWeeklyStepCount("2019/06/21")).to.eql([3577, 4294, 7402, 3486, 11374, 14810, 2634]);
   });
 
-  it('Should get weekly stairs climbed', () => {
-    expect(activity.getWeeklyStairsClimbed("2019/06/21")).to.eql([16, 10, 33, 32, 13, 18, 5]);
+  it('Should get different weekly step counts', () => {
+    expect(activity.getWeeklyStepCount("2019/06/22")).to.eql([4294, 7402, 3486, 11374, 14810, 2634, 2452]);
   });
 
-  it('Should get the record number of stairs climbed', () => {
-    expect(activity.getRecordNumberOfStairsClimbed()).to.equal(33);
+  it('Should get weekly flights climbed', () => {
+    expect(activity.getWeeklyFlightsClimbed("2019/06/21")).to.eql([16, 10, 33, 32, 13, 18, 5]);
+  });
+
+  it('Should get different weekly flights climbed', () => {
+    expect(activity.getWeeklyFlightsClimbed("2019/06/22")).to.eql([10, 33, 32, 13, 18, 5, 4]);
+  });
+
+  it('Should get the record number of flights climbed', () => {
+    expect(activity.getRecordNumberOfFlightsClimbed()).to.equal(33);
   });
 });

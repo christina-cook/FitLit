@@ -95,10 +95,10 @@ function updateActivityDash() {
   minutesToday.innerText = user.activity.getDailyMinutesActive(today);
   avgMinutesToday.innerText = userRepository.getDailyAverageMinutes(today);
   milesToday.innerText = user.getDailyMilesWalked(today);
-  flightsToday.innerText = user.activity.getDailyStairsClimbed(today);
-  avgFlightsToday.innerText = userRepository.getDailyAverageStairs(today);
+  flightsToday.innerText = user.activity.getDailyFlightsClimbed(today);
+  avgFlightsToday.innerText = userRepository.getDailyAverageFlights(today);
   weeklyStepsChart = new Chart(weeklySteps, formatChart('Steps Taken', user.activity.getWeeklyStepCount(today)));
-  weeklyFlightsChart = new Chart(weeklyStairs, formatChart('Flights Climbed', user.activity.getWeeklyStairsClimbed(today)));
+  weeklyFlightsChart = new Chart(weeklyStairs, formatChart('Flights Climbed', user.activity.getWeeklyFlightsClimbed(today)));
   weeklyMinutesChart = new Chart(weeklyMinutes, formatChart('Minutes Active', user.activity.getWeeklyMinutesActive(today)));
 }
 

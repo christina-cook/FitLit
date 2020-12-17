@@ -76,15 +76,15 @@ class UserRepository {
     return Math.round(averageSteps);
   }
 
-  getDailyAverageStairs(date) {
-    const stairs = [];
+  getDailyAverageFlights(date) {
+    const flights = [];
 
-    this.users.forEach(user => stairs.push(user.activity.getDailyStairsClimbed(date)));
+    this.users.forEach(user => flights.push(user.activity.getDailyFlightsClimbed(date)));
 
-    const averageStairs = stairs.reduce((sum, stairCount) => {
-      return sum + stairCount;
-    }, 0) / stairs.length;
-    return Math.floor(averageStairs);
+    const averageFlights = flights.reduce((sum, flightCount) => {
+      return sum + flightCount;
+    }, 0) / flights.length;
+    return Math.floor(averageFlights);
   }
 
   getDailyAverageMinutes(date) {
